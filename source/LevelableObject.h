@@ -5,13 +5,15 @@
 
 class LevelableObject: public GameObject {
   public:
-    LevelableObject(): GameObject() { _level = START_LEVEL; }
+    LevelableObject(const ssize_t id = FREE_ID, const ssize_t& level = START_LEVEL): GameObject(id) { _level = level; }
     virtual ~LevelableObject() {}
     ssize_t level() const { return _level; }
     size_t set_level(const ssize_t& value);
+  protected:
     size_t increase_level(const ssize_t& shift = 1);
     size_t decrease_level(const ssize_t& shift = 1);
-  protected:
+    size_t virtual level_up() { increase_level(); return RC_OK; }
+    
     ssize_t _level;
 };
 

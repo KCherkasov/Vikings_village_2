@@ -1,18 +1,16 @@
 ﻿#ifndef VIKINGS_GAME_OBJECT_H
 #define VIKINGS_GAME_OBJECT_H
 
-#include "misc.h"
+#include "GameEntity.h"
 
-class GameObject {
+class GameObject: public GameEntity {
   public:
-    GameObject() { _own_id = ++_id; }
+    GameObject(const ssize_t& id = FREE_ID): GameEntity(id) { _name.clear(); _description.clear(); _to_delete = false; }
     virtual ~GameObject() {}
     ssize_t id() const { return _own_id; }
     std::string name() const { return _name; }
     std::string description() const { return _description; }
   protected:
-    static ssize_t _id;
-    ssize_t _own_id;
     std::string _name;
     std::string _description;
 };
