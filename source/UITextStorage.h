@@ -1,4 +1,4 @@
-﻿#ifndef VIKINGS_UI_TEXT_STORAGE_H
+#ifndef VIKINGS_UI_TEXT_STORAGE_H
 #define VIKINGS_UI_TEXT_STORAGE_H
 
 #include "misc.h"

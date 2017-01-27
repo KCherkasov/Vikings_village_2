@@ -1,4 +1,4 @@
-﻿#ifndef BASE_SQLITE_STORAGE_H
+#ifndef BASE_SQLITE_STORAGE_H
 #define BASE_SQLITE_STORAGE_H
 
 #include "misc.h"
@@ -13,7 +13,7 @@ class BaseStorage {
     virtual size_t clear_storage() = 0;
   protected:
     ssize_t open_connection(const std::string& db_name, sqlite3*& connection);
-    ssize_t close_connection();
+    ssize_t close_connection(sqlite3*& connection);
 };
 
 #endif

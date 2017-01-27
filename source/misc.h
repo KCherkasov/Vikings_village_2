@@ -1,4 +1,4 @@
-﻿#ifndef VIKINGS_MISC_H
+#ifndef VIKINGS_MISC_H
 #define VIKINGS_MISC_H
 
 #include <vector>
@@ -8,7 +8,6 @@
 #include <ctime>
 #include <cstdlib>
 
-typedef int ssize_t;
 
 
 //-- global constants declaration --//

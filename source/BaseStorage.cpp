@@ -1,4 +1,4 @@
-﻿#include "BaseStorage.h"
+#include "BaseStorage.h"
 
 ssize_t BaseStorage::open_connection(const std::string& db_name, sqlite3*& connection) {
   return sqlite3_open(db_name.data(), &connection);
