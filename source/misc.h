@@ -6,7 +6,10 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
-#include <stdlib>
+#include <cstdlib>
+
+typedef int ssize_t;
+
 
 //-- global constants declaration --//
 
