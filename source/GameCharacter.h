@@ -24,6 +24,7 @@ class GameCharacter: public LevelableObject {
     std::string short_what() const;
     std::string talk() const; // method for getting character replies on various situations (think about args, we shall somehow tell the character about the situation he/she'll talk about)
     size_t update();
+    size_t increase_stat(const size_t& index, const size_t& shift = 1);
   protected:
     ssize_t _stat_points;
     size_t _wounds; // amount of damage TAKEN by the character. Healthy character has 0 wounds.

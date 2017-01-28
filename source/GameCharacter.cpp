@@ -13,33 +13,7 @@ size_t GameCharacter::wounds_cap() const {
   return total_wounds;
 }
 
-GameCharacter::GameCharacter(const GameCharacterTemplate& data): LevelableObject(data._own_id, data._level) {
-  _name = data._name;
-  _description = data._description;
-  _stat_points = data._stat_points;
-  _gender = data._gender;
-  _experience.clear();
-  if (data._own_id == FREE_ID) {
-    _experience.resize(PI_SIZE);
-    _experience[PI_CURRENT] = SIZE_T_DEFAULT_VALUE;
-    _experience[PI_CAP] = FIRST_LEVEL_UP_CAP;
-  } else {
-    _experience = data._experience;
-  }
-  _stats.clear();
-  if (data._own_id == FREE_ID) {
-    _stats.resize(CS_SIZE);
-    for (size_t i = 0; i < _stats.size(); ++i) {
-      if (_gender == MALE_GENDER) {
-        _stats[i] = INITIAL_MALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor(double(BASIC_SEED / 2));
-      } else {
-        _stats[i] = INITIAL_FEMALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor((double)(BASIC_SEED / 2));
-      }
-    }
-  } else {
-    _stats = data._stats;
-  }
-}
+GameCharacter::GameCharacter(const GameCharacterTemplate& data): LevelableObject(data._own_id, data._level), _name(data._name), _description(data._description), _stat_points(data._stat_points), _wounds(data._wounds), _gender(data._gender), _experience(data._experience), _stats(data._stats) {}
 
 size_t GameCharacter::add_wounds(const size_t& amount) {
   _wounds += amount;
@@ -161,5 +135,13 @@ size_t GameCharacter::update() {
   if (_experience[PI_CURRENT] >= _experience[PI_CAP]) {
     level_up();
   }
+  return RC_OK;
+}
+
+size_t GameCharacter::increase_stat(const size_t& index, const size_t& shift) {
+  if (index >= _stats.size()) {
+    return RC_BAD_INDEX;
+  }
+  _stats[index] += shift;
   return RC_OK;
 }

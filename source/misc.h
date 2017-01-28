@@ -30,6 +30,9 @@ const bool FEMALE_GENDER = false;
 // level-up experience point cap for gaining level 2. Other level-up caps are calculated basing on this one.
 const size_t FIRST_LEVEL_UP_CAP = 100;
 
+// percentage increasement of experience cap per each level-up
+const size_t EXP_CAP_INCREASEMENT = 110;
+
 // basic wounds cap without any traits giving extra wounds
 const size_t BASIC_WOUNDS_CAP = 1;
 
@@ -54,7 +57,7 @@ const size_t START_TURN = 1;
 //-- enumerations declaration --//
 
 // used for marking functions and methods ending and future error handling
-enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_NO_MANAGER, RC_HAS_MANAGER, RC_SIZE };
+enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_BAD_INDEX, RC_NO_MANAGER, RC_HAS_MANAGER, RC_SIZE };
 
 // two-elements array indices and size, used to designated current state and max value of some stats
 enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
@@ -87,6 +90,6 @@ size_t convert_from_string(const std::string& from, T& result) {
   return RC_OK;
 }
 
-//-- --//
+//-- functions declaration end --//
 
 #endif
