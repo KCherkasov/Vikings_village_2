@@ -16,12 +16,16 @@ class UITextStorage: public BaseStorage {
     std::string character_field_name(const size_t& index) { return _character_field_names[index]; }
     size_t stat_names_count() const { return _stat_names.size(); }
     std::string stat_name(const size_t& index) const { return _stat_names[index]; }
+    size_t tags_count() const { return _manager_tags.size(); }
+    std::string tag(const size_t& index) { return _manager_tags[index]; }
   private:
     std::vector<std::string> _character_field_names;
     std::vector<std::string> _stat_names;
+    std::vector<std::string> _manager_tags;
     
     ssize_t read_character_field_names(sqlite3*& connection);
     ssize_t read_stat_names(sqlite3*& connection);
+    ssize_t read_manager_tags(sqlite3*& connection);
 };
 
 

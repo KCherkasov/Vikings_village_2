@@ -26,11 +26,25 @@ ssize_t UITextStorage::read_stat_names(sqlite3*& connection) {
   return response;  
 }
 
+ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
+  _manager_tags.clear();
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "", -1, &statement, 0);
+  for (size_t i = 0; i < TL_SIZE; ++i) {
+    response = sqlite3_step(statement);
+    _manager_tags.push_back(std::string());
+    _manager_tags[_manager_tags.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
+  }
+  response = sqlite3_finalize(statement);
+  return response;
+}
+
 size_t UITextStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
   open_connection(db_name, database);
   read_character_field_names(database);
   read_stat_names(database);
+  read_manager_tags(database);
   close_connection(database);
   return RC_OK;
 }
@@ -38,5 +52,6 @@ size_t UITextStorage::fill_storage(const std::string& db_name) {
 size_t UITextStorage::clear_storage() {
   _character_field_names.clear();
   _stat_names.clear();
+  _manager_tags.clear();
   return RC_OK;
 }

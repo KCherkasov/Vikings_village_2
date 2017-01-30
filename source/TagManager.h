@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-enum ManagerResponse { MR_OK, MR_NOT_FOUND, MR_BAD_INDEX, MR_BAD_INPUT, MR_SIZE };
+enum ManagerResponse { MR_OK, MR_NOT_FOUND, MR_BAD_INDEX, MR_BAD_INPUT, MR_ALREADY_HAS, MR_SIZE };
 
 class TagManager {
   public:
@@ -14,6 +14,8 @@ class TagManager {
     ~TagManager() {}
     size_t tags_count() const { return _tag_list.size(); }
     std::string tag(const size_t& id) const { std::string result; if (id < _tag_list.size()) { result = _tag_list[id]; } return result; }
+    bool has_tag(const char* tag) const;
+    bool has_tag(const std::string& tag) const;
     size_t add_tag(const std::string& new_tag);
     size_t add_tag(const char* new_tag);
     size_t remove_tag(const size_t& tag_id);

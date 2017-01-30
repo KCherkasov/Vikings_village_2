@@ -6,7 +6,7 @@
 
 class GameEntity {
   public:
-    GameEntity(const ssize_t& id = FREE_ID) { if (id != FREE_ID) { if (id > _id) { _id = id + 1; } _own_id = id; } else { _own_id = ++_id; }  }
+    GameEntity(const ssize_t& id = FREE_ID): _to_delete(false), _manager(NULL) { if (id != FREE_ID) { if (id > _id) { _id = id + 1; } _own_id = id; } else { _own_id = ++_id; }  }
     virtual ~GameEntity() {}
     ssize_t id() const { return _own_id; }
     bool to_delete() const { return _to_delete; }

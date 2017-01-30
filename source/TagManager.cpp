@@ -15,8 +15,30 @@ size_t TagManager::find_tag(const size_t& tag_id, const size_t& start_pos, const
   return tag_pos;
 }
 
+bool TagManager::has_tag(const char* tag) const {
+  std::string str_tag(tag);
+  for (size_t i = 0; i < _tag_list.size(); ++i) {
+    if (_tag_list[i] == str_tag) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool TagManager::has_tag(const std::string& tag) const {
+  for (size_t i = 0; i < _tag_list.size(); ++i) {
+    if (_tag_list[i] == tag) {
+      return true;
+    }
+  }
+  return false;
+}
+
 size_t TagManager::add_tag(const std::string& new_tag) {
   if (!new_tag.empty()) {
+    if (has_tag(new_tag)) {
+      return MR_ALREADY_HAS;
+    }
     _tag_list.push_back(new_tag);
     return MR_OK;
   } else {
@@ -27,6 +49,9 @@ size_t TagManager::add_tag(const std::string& new_tag) {
 size_t TagManager::add_tag(const char* new_tag) {
   if (new_tag == NULL) {
   	return MR_BAD_INPUT;
+  }
+  if (has_tag(new_tag)) {
+    return MR_ALREADY_HAS;
   }
   std::string to_add(new_tag);
   _tag_list.push_back(to_add);
