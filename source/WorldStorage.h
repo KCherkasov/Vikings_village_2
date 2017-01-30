@@ -14,6 +14,7 @@ class WorldStorage {
     WorldStorage(const std::string& templates_db_name, const std::string& ui_texts_db_name);
     ~WorldStorage() {}
     
+    bool is_filled() const { return _templates.is_filled() && _ui_dictionary.is_filled() && _manager.is_filled(); }
     size_t fill(const std::string& templates_db_name, const std::string& ui_texts_db_name);
     size_t clear();
     

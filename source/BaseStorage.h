@@ -11,6 +11,7 @@ class BaseStorage {
     virtual ~BaseStorage() {}
     virtual size_t fill_storage(const std::string& db_name) = 0;
     virtual size_t clear_storage() = 0;
+    virtual bool is_filled() const = 0;
   protected:
     ssize_t open_connection(const std::string& db_name, sqlite3*& connection);
     ssize_t close_connection(sqlite3*& connection);

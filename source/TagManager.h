@@ -12,6 +12,7 @@ class TagManager {
     TagManager() {}
     TagManager(const std::vector<std::string>& tag_list): _tag_list(tag_list) {}
     ~TagManager() {}
+    bool is_filled() const { return !_tag_list.empty(); }
     size_t tags_count() const { return _tag_list.size(); }
     std::string tag(const size_t& id) const { std::string result; if (id < _tag_list.size()) { result = _tag_list[id]; } return result; }
     bool has_tag(const char* tag) const;
@@ -20,6 +21,7 @@ class TagManager {
     size_t add_tag(const char* new_tag);
     size_t remove_tag(const size_t& tag_id);
     size_t remove_tag(const std::string& tag);
+    size_t clear_tags() { _tag_list.clear(); return MR_OK; }
     size_t get_by_tag(const size_t& tag_id, const size_t& start_pos, const std::string& source, std::string& result) const;
     size_t replace_tag(const size_t& tag_id, const size_t& start_pos, std::string& source, const std::string& replacement) const;
   private:

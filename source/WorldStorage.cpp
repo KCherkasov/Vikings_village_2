@@ -17,6 +17,13 @@ size_t WorldStorage::fill(const std::string& templates_db_name, const std::strin
   return RC_OK;
 }
 
+size_t WorldStorage::clear() {
+  _templates.clear_storage();
+  _ui_dictionary.clear_storage();
+  _manager.clear_tags();
+  return RC_OK;
+}
+
 size_t WorldStorage::make_character(GameCharacter*& result, const ssize_t& level) const {
   GameCharacterTemplate data = _templates.make_character_template(level);
   result = new GameCharacter(data);

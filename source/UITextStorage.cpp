@@ -39,6 +39,10 @@ ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
   return response;
 }
 
+bool UITextStorage::is_filled() const {
+  return !_stat_names.empty() && !_character_field_names.empty() && !_manager_tags.empty();
+}
+
 size_t UITextStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
   open_connection(db_name, database);

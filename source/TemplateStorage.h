@@ -8,10 +8,14 @@ class TemplateStorage: public BaseStorage {
   public:
     TemplateStorage(): BaseStorage() {}
     virtual ~TemplateStorage() {}
+    
+    bool is_filled() const;
     size_t fill_storage(const std::string& db_name);
     size_t clear_storage();
+    
     GameCharacterTemplate make_character_template(const ssize_t& level = START_LEVEL) const;
     GameCharacterTemplate make_character_template(const bool& gender, const ssize_t& level = START_LEVEL) const;
+  
   private:
     std::vector<std::string> _male_nameparts_begin;
     std::vector<std::string> _male_nameparts_end;

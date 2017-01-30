@@ -58,6 +58,10 @@ std::string TemplateStorage::surname(const bool& gender) const {
   return surname;
 }
 
+bool TemplateStorage::is_filled() const {
+  return !_male_nameparts_begin.empty() && !_male_nameparts_end.empty() && !_surname_suffixes.empty();
+}
+
 size_t TemplateStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
   open_connection(db_name, database);

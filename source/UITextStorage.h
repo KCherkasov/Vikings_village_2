@@ -10,8 +10,11 @@ class UITextStorage: public BaseStorage {
   public:
     UITextStorage(): BaseStorage() {}
     virtual ~UITextStorage() {}
+    
+    bool is_filled() const;
     size_t fill_storage(const std::string& db_name);
     size_t clear_storage();
+    
     size_t character_field_names_count() const { return _character_field_names.size(); }
     std::string character_field_name(const size_t& index) { return _character_field_names[index]; }
     size_t stat_names_count() const { return _stat_names.size(); }
