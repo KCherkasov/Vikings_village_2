@@ -16,7 +16,7 @@ bool operator == (const GameCharacterTemplate& lhs, const GameCharacterTemplate&
   if (lhs._stat_points != rhs._stat_points) {
     return false;
   }
-  if (lhs._wounds != rhs._wounds;) {
+  if (lhs._wounds != rhs._wounds) {
     return false;
   }
   if (lhs._gender != rhs._gender) {
@@ -35,14 +35,14 @@ bool operator < (const GameCharacterTemplate& lhs, const GameCharacterTemplate& 
   return lhs._own_id < rhs._own_id;
 }
 
-bool operator > const GameCharacterTemplate& lhs, const GameCharacterTemplate& rhs) {
+bool operator > (const GameCharacterTemplate& lhs, const GameCharacterTemplate& rhs) {
   return lhs._own_id > rhs._own_id;
 }
 
 std::ofstream& operator << (std::ofstream& stream, const GameCharacterTemplate& data) {
   stream << data._own_id;
   stream << data._name;
-  stream << data_description;
+  stream << data._description;
   stream << data._level;
   stream << data._stat_points;
   stream << data._wounds;

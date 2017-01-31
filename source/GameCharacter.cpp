@@ -13,7 +13,10 @@ size_t GameCharacter::wounds_cap() const {
   return total_wounds;
 }
 
-GameCharacter::GameCharacter(const GameCharacterTemplate& data): LevelableObject(data._own_id, data._level), _name(data._name), _description(data._description), _stat_points(data._stat_points), _wounds(data._wounds), _gender(data._gender), _experience(data._experience), _stats(data._stats) {}
+GameCharacter::GameCharacter(const GameCharacterTemplate& data): LevelableObject(data._own_id, data._level), _stat_points(data._stat_points), _wounds(data._wounds), _gender(data._gender), _experience(data._experience), _stats(data._stats) {
+  _name = data._name;
+  _description = data._description;
+}
 
 size_t GameCharacter::add_wounds(const size_t& amount) {
   _wounds += amount;
@@ -43,7 +46,7 @@ size_t GameCharacter::ranged_skill() const {
 
 size_t GameCharacter::defense() const {
   size_t defense = SIZE_T_DEFAULT_VALUE;
-  skill += _stats[CS_DEFENSE];
+  defense += _stats[CS_DEFENSE];
   return defense;
 }
 
@@ -60,39 +63,40 @@ std::string GameCharacter::what() const {
   result += _description;
   result += _manager->tag(TL_DESCRIPTION);
   result += _manager->tag(TL_LEVEL);
-  convert_to_string<ssize_t>(_level, buffer);
+  buffer = convert_to_string<ssize_t>(_level);
   result += buffer;
   buffer.clear();
   result += _manager->tag(TL_LEVEL);
   result += _manager->tag(TL_STAT_POINTS);
-  convert_to_string<ssize_t>(_stat_points, buffer);
+  buffer = convert_to_string<ssize_t>(_stat_points);
   result += buffer;
-  bufefr.clear();
+  buffer.clear();
   result += _manager->tag(TL_STAT_POINTS);
   result += _manager->tag(TL_WOUNDS);
-  convert_to_string<size_t>(_wounds, buffer);
+  buffer = convert_to_string<size_t>(_wounds);
   result += buffer;
   buffer.clear();
   result += _manager->tag(TL_WOUNDS);
   result += _manager->tag(TL_WOUNDS_CAP);
-  convert_to_string<size_t>(wounds_cap(), buffer);
+  buffer = convert_to_string<size_t>(wounds_cap());
   result += buffer;
   buffer.clear();
   result += _manager->tag(TL_WOUNDS_CAP);
   result += _manager->tag(TL_GENDER);
-  convert_to_string<bool>(_gender, buffer);
+  buffer = convert_to_string<bool>(_gender);
+  result += buffer;
   buffer.clear();
   result += _manager->tag(TL_GENDER);
   for (size_t i = 0; i < _experience.size(); ++i) {
     result += _manager->tag(TL_EXPERIENCE);
-    convert_to_string<size_t>(_experience[i], buffer);
+    buffer = convert_to_string<size_t>(_experience[i]);
     result += buffer;
     buffer.clear();
     result += _manager->tag(TL_EXPERIENCE);
   }
   for (size_t i = 0; i < _stats.size(); ++i) {
     result += _manager->tag(TL_STATS);
-    convert_to_string<size_t>(_stats[i], buffer);
+    buffer = convert_to_string<size_t>(_stats[i]);
     result += buffer;
     result += _manager->tag(TL_STATS);
   }
@@ -108,8 +112,7 @@ std::string GameCharacter::short_what() const {
   result += _name;
   result += _manager->tag(TL_NAME);
   result += _manager->tag(TL_LEVEL);
-  std::string buffer;
-  convert_to_string<ssize_t>(_level, buffer);
+  std::string buffer = convert_to_string<ssize_t>(_level);
   result += buffer;
   buffer.clear();
   result += _manager->tag(TL_LEVEL);
@@ -132,7 +135,7 @@ size_t GameCharacter::update() {
     _to_delete = true;
     return RC_OK;
   }
-  if (_experience[PI_CURRENT] >= _experience[PI_CAP]) {
+  if (_experience[PI_CURRENT] >= _experience[PI_MAX]) {
     level_up();
   }
   return RC_OK;

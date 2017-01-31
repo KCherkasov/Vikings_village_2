@@ -4,7 +4,7 @@ ssize_t TemplateStorage::read_male_names(sqlite3*& connection) {
   _male_nameparts_begin.clear();
   _male_nameparts_end.clear();
   sqlite3_stmt* statement;
-  ssize_t response = sqlite3_prepare(connection, "select count(*) from 'male_nameparts'", -1, &statement, 0);
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'male_nameparts'", -1, &statement, 0);
   sqlite3_step(statement);
   size_t count = sqlite3_column_int(statement, 0);
   sqlite3_finalize(statement);
@@ -23,11 +23,11 @@ ssize_t TemplateStorage::read_male_names(sqlite3*& connection) {
 ssize_t TemplateStorage::read_surname_suffixes(sqlite3*& connection) {
   _surname_suffixes.clear();
   sqlite3_stmt* statement;
-  ssize_t response = sqlite3_prepare(connection, "select count(*) from 'surname_suffixes'", -1, &statement, 0);
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'surname_suffixes'", -1, &statement, 0);
   sqlite3_step(statement);
   size_t count = sqlite3_column_int(statement, 0);
   sqlite3_finalize(statement);
-  response = sqlite3_prepare(connection, "select id name from 'surname_suffixes'", -1, &statement, 0);
+  response = sqlite3_prepare(connection, "select id, name from 'surname_suffixes'", -1, &statement, 0);
   for (size_t i = 0; i < count; ++i) {
     sqlite3_step(statement);
     _surname_suffixes.push_back(std::string());
@@ -45,7 +45,7 @@ std::string TemplateStorage::male_name() const {
 }
 
 std::string TemplateStorage::female_name() const {
-  std::string name;
+  std::string name("fem_name_here");
   
   return name;
 }
@@ -54,7 +54,11 @@ std::string TemplateStorage::surname(const bool& gender) const {
   std::string surname;
   surname += _male_nameparts_begin[roll_dice(_male_nameparts_begin.size())];
   surname += _male_nameparts_end[roll_dice(_male_nameparts_end.size())];
-  surname += _surname_suffixes[gender];
+  if (gender == MALE_GENDER) {
+    surname += _surname_suffixes[0];
+  } else {
+    surname += _surname_suffixes[1];
+  }
   return surname;
 }
 
@@ -103,14 +107,14 @@ GameCharacterTemplate TemplateStorage::make_character_template(const ssize_t& le
   result._experience[PI_CURRENT] = SIZE_T_DEFAULT_VALUE;
   result._experience[PI_MAX] = FIRST_LEVEL_UP_CAP;
   for (size_t i = 1; i < result._level; ++i) {
-    _experience[PI_CURRENT] = _experience[PI_MAX] + 1;
-    _experience[PI_MAX] *= EXP_CAP_INCREASEMENT;
-    _experience[PI_MAX] /= PERCENT_CAP;
+    result._experience[PI_CURRENT] = result._experience[PI_MAX] + 1;
+    result._experience[PI_MAX] *= EXP_CAP_INCREASEMENT;
+    result._experience[PI_MAX] /= PERCENT_CAP;
   }
   result._stats.clear();
   result._stats.resize(CS_SIZE);
   for (size_t i = 0; i < result._stats.size(); ++i) {
-    if (gender == MALE_GENDER) {
+    if (result._gender == MALE_GENDER) {
       result._stats[i] = INITIAL_MALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor((double)(BASIC_SEED / 2));
     } else {
       result._stats[i] = INITIAL_FEMALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor((double)(BASIC_SEED / 2));
@@ -130,7 +134,7 @@ GameCharacterTemplate TemplateStorage::make_character_template(const bool& gende
   if (gender == MALE_GENDER) {
     result._name += male_name();
   } else {
-    
+    result._name += female_name();
   }
   result._name.append(" ");
   result._name += surname(gender);
@@ -144,22 +148,25 @@ GameCharacterTemplate TemplateStorage::make_character_template(const bool& gende
   result._experience[PI_CURRENT] = SIZE_T_DEFAULT_VALUE;
   result._experience[PI_MAX] = FIRST_LEVEL_UP_CAP;
   for (size_t i = 1; i < result._level; ++i) {
-    _experience[PI_CURRENT] = _experience[PI_MAX] + 1;
-    _experience[PI_MAX] *= EXP_CAP_INCREASEMENT;
-    _experience[PI_MAX] /= PERCENT_CAP;
+    result._experience[PI_CURRENT] = result._experience[PI_MAX] + 1;
+    result._experience[PI_MAX] *= EXP_CAP_INCREASEMENT;
+    result._experience[PI_MAX] /= PERCENT_CAP;
   }
   result._stats.clear();
   result._stats.resize(CS_SIZE);
   for (size_t i = 0; i < result._stats.size(); ++i) {
-    if (gender == MALE_GENDER) {
+    if (result._gender == MALE_GENDER) {
       result._stats[i] = INITIAL_MALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor((double)(BASIC_SEED / 2));
     } else {
       result._stats[i] = INITIAL_FEMALE_STATS_VALUE + roll_dice(BASIC_SEED) - floor((double)(BASIC_SEED / 2));
     }
   }
   while (result._stat_points > 0) {
-    ++result._stats[roll_dice(result._stats.size())];
-    --result._stat_points;
+    size_t stat_id = roll_dice(result._stats.size());
+    if (result._stats[stat_id] < STAT_MAX_VALUE) {
+      ++result._stats[stat_id];
+      --result._stat_points;
+    }
   }
   return result;
 }

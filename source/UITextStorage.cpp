@@ -29,7 +29,7 @@ ssize_t UITextStorage::read_stat_names(sqlite3*& connection) {
 ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
   _manager_tags.clear();
   sqlite3_stmt* statement;
-  ssize_t response = sqlite3_prepare(connection, "", -1, &statement, 0);
+  ssize_t response = sqlite3_prepare(connection, "select id, tag from 'manager_tags'", -1, &statement, 0);
   for (size_t i = 0; i < TL_SIZE; ++i) {
     response = sqlite3_step(statement);
     _manager_tags.push_back(std::string());
@@ -39,8 +39,21 @@ ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
   return response;
 }
 
+ssize_t UITextStorage::read_gender_names(sqlite3*& connection) {
+  _gender_names.clear();
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "select id, name from 'gender_names'", -1, &statement, 0);
+  for (size_t i = 0; i < PI_SIZE; ++i) {
+    response = sqlite3_step(statement);
+    _gender_names.push_back(std::string());
+    _gender_names[_gender_names.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
+  }
+  response = sqlite3_finalize(statement);
+  return response;
+}
+
 bool UITextStorage::is_filled() const {
-  return !_stat_names.empty() && !_character_field_names.empty() && !_manager_tags.empty();
+  return !_stat_names.empty() && !_character_field_names.empty() && !_manager_tags.empty() && !_gender_names.empty();
 }
 
 size_t UITextStorage::fill_storage(const std::string& db_name) {
@@ -49,6 +62,7 @@ size_t UITextStorage::fill_storage(const std::string& db_name) {
   read_character_field_names(database);
   read_stat_names(database);
   read_manager_tags(database);
+  read_gender_names(database);
   close_connection(database);
   return RC_OK;
 }
@@ -57,5 +71,6 @@ size_t UITextStorage::clear_storage() {
   _character_field_names.clear();
   _stat_names.clear();
   _manager_tags.clear();
+  _gender_names.clear();
   return RC_OK;
 }

@@ -21,13 +21,13 @@ class WorldStorage {
     size_t make_character(GameCharacter*& result, const ssize_t& level = START_LEVEL) const;
     size_t make_character(GameCharacter*& result, const GameCharacterTemplate& data) const;
     
-    UITextStorage* dictionary() const { return &_ui_dictionary; }
-    TagManager* manager() const { return &_manager; }
+    UITextStorage* dictionary() { return &_ui_dictionary; }
+    TagManager* manager() { return &_manager; }
     
   private:
     TemplateStorage _templates;
     UITextStorage _ui_dictionary;
     TagManager _manager;
-}
+};
 
 #endif

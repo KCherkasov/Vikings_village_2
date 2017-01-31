@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <ctime>
+#include <cmath>
 #include <cstdlib>
 
 
@@ -40,11 +41,13 @@ const size_t BASIC_WOUNDS_CAP = 1;
 const size_t INITIAL_MALE_STATS_VALUE = 20;
 const size_t INITIAL_FEMALE_STATS_VALUE = 15;
 
+const size_t STAT_MAX_VALUE = 100;
+
 // stat points granted per each level-up
 const ssize_t STAT_POINTS_PER_LEVEL = 5;
 
 // percent range cap
-const size_t PERCENT_CAP = 100;
+const size_t PERCENT_CAP = 200;
 
 // basic seed for stats randomization
 const size_t BASIC_SEED = 15;
@@ -67,7 +70,7 @@ enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
 enum CharacterStats { CS_MELEE, CS_RANGED, CS_DEFENSE, CS_SIZE };
 
 // tag list for tag manager class
-enum TagList { TL_NAME, TL_DESCRIPTION, TL_LEVEL, TL_STAT_POINTS, TL_WOUNDS, TL_WOUND_CAP, TL_GENDER, TL_EXPERIENCE, TL_STATS, TL_SPEECH, TL_TURN, TL_SIZE };
+enum TagList { TL_NAME, TL_DESCRIPTION, TL_LEVEL, TL_STAT_POINTS, TL_WOUNDS, TL_WOUNDS_CAP, TL_GENDER, TL_EXPERIENCE, TL_STATS, TL_SPEECH, TL_TURN, TL_SIZE };
 
 //-- enumerations declaration end --//
 
@@ -77,10 +80,10 @@ void seed();
 size_t roll_dice(const size_t& dice = PERCENT_CAP);
 
 template<class T>
-size_t convert_to_string(const T& value, std::string& result) {
-  std::ostringstream into(result);
+std::string convert_to_string(const T& value) {
+  std::ostringstream into;
   into << value;
-  return RC_OK;
+  return into.str();
 }
 
 template<class T>

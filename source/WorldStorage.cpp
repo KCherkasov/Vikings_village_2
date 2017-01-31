@@ -27,12 +27,12 @@ size_t WorldStorage::clear() {
 size_t WorldStorage::make_character(GameCharacter*& result, const ssize_t& level) const {
   GameCharacterTemplate data = _templates.make_character_template(level);
   result = new GameCharacter(data);
-  result->set_manager(_manager);
+  result->set_manager(const_cast<TagManager*>(&_manager));
   return RC_OK;
 }
 
 size_t WorldStorage::make_character(GameCharacter*& result, const GameCharacterTemplate& data) const {
   result = new GameCharacter(data);
-  result->set_manager(_manager);
+  result->set_manager(const_cast<TagManager*>(&_manager));
   return RC_OK;
 }

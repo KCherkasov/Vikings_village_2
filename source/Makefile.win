@@ -1,17 +1,17 @@
-# Project: Проект1
+# Project: templates_db_test
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o BaseStorage.o misc.o UITextStorage.o SQLite/sqlite3.o
-LINKOBJ  = main.o BaseStorage.o misc.o UITextStorage.o SQLite/sqlite3.o
-LIBS     = -L"D:/Dev-Cpp/MinGW64/lib32" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
-INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = ui_db_test.exe
-CXXFLAGS = $(CXXINCS) -m32 -g3
-CFLAGS   = $(INCS) -m32 -g3
+OBJ      = templates_db_test.o BaseStorage.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o SQLite/sqlite3.o UITextStorage.o WorldStorage.o
+LINKOBJ  = templates_db_test.o BaseStorage.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o SQLite/sqlite3.o UITextStorage.o WorldStorage.o
+LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/lib32" -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
+INCS     = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = templates_db_test.exe
+CXXFLAGS = $(CXXINCS) -m32 -std=c++11 -Wall -g3
+CFLAGS   = $(INCS) -m32 -std=c++11 -Wall -g3
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -24,17 +24,38 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp
-	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+templates_db_test.o: templates_db_test.cpp
+	$(CPP) -c templates_db_test.cpp -o templates_db_test.o $(CXXFLAGS)
 
 BaseStorage.o: BaseStorage.cpp
 	$(CPP) -c BaseStorage.cpp -o BaseStorage.o $(CXXFLAGS)
 
+GameCharacter.o: GameCharacter.cpp
+	$(CPP) -c GameCharacter.cpp -o GameCharacter.o $(CXXFLAGS)
+
+GameEntity.o: GameEntity.cpp
+	$(CPP) -c GameEntity.cpp -o GameEntity.o $(CXXFLAGS)
+
+LevelableObject.o: LevelableObject.cpp
+	$(CPP) -c LevelableObject.cpp -o LevelableObject.o $(CXXFLAGS)
+
 misc.o: misc.cpp
 	$(CPP) -c misc.cpp -o misc.o $(CXXFLAGS)
+
+StorageEntities.o: StorageEntities.cpp
+	$(CPP) -c StorageEntities.cpp -o StorageEntities.o $(CXXFLAGS)
+
+TagManager.o: TagManager.cpp
+	$(CPP) -c TagManager.cpp -o TagManager.o $(CXXFLAGS)
+
+TemplateStorage.o: TemplateStorage.cpp
+	$(CPP) -c TemplateStorage.cpp -o TemplateStorage.o $(CXXFLAGS)
+
+SQLite/sqlite3.o: SQLite/sqlite3.c
+	$(CC) -c SQLite/sqlite3.c -o SQLite/sqlite3.o $(CFLAGS)
 
 UITextStorage.o: UITextStorage.cpp
 	$(CPP) -c UITextStorage.cpp -o UITextStorage.o $(CXXFLAGS)
 
-SQLite/sqlite3.o: SQLite/sqlite3.c
-	$(CC) -c SQLite/sqlite3.c -o SQLite/sqlite3.o $(CFLAGS)
+WorldStorage.o: WorldStorage.cpp
+	$(CPP) -c WorldStorage.cpp -o WorldStorage.o $(CXXFLAGS)

@@ -21,12 +21,12 @@ class TemplateStorage: public BaseStorage {
     std::vector<std::string> _male_nameparts_end;
     std::vector<std::string> _surname_suffixes;
     
-    ssize_t read_male_nameparts(sqlite3*& connection);
+    ssize_t read_male_names(sqlite3*& connection);
     ssize_t read_surname_suffixes(sqlite3*& connection);
     
-    std::string _male_name() const;
-    std::string _female_name() const;
-    std::string _surname(const bool& gender) const;
+    std::string male_name() const;
+    std::string female_name() const;
+    std::string surname(const bool& gender) const;
 };
 
 #endif
