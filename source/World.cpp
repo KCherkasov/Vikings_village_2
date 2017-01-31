@@ -44,6 +44,7 @@ size_t World::update() {
 
 std::string World::character_what(const size_t& index) const {
   std::string result;
+  
   return result;
 }
 
