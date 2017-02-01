@@ -41,13 +41,13 @@ const size_t BASIC_WOUNDS_CAP = 1;
 const size_t INITIAL_MALE_STATS_VALUE = 20;
 const size_t INITIAL_FEMALE_STATS_VALUE = 15;
 
-const size_t STAT_MAX_VALUE = 100;
+const size_t STAT_MAX_VALUE = 200;
 
 // stat points granted per each level-up
 const ssize_t STAT_POINTS_PER_LEVEL = 5;
 
 // percent range cap
-const size_t PERCENT_CAP = 200;
+const size_t PERCENT_CAP = 100;
 
 // basic seed for stats randomization
 const size_t BASIC_SEED = 15;
