@@ -7,7 +7,7 @@ class World {
   public:
     World() {}
     ~World() {}
-    size_t fill(const std::string& templates_db_name, const std::string& ui_db_name) { _storage.fill(templates_db_name, ui_db_name); }
+    size_t fill(const std::string& templates_db_name, const std::string& ui_db_name) { _storage.fill(templates_db_name, ui_db_name); return RC_OK; }
     size_t new_game(const std::string& player_name);
     size_t load_game(const std::string& fname); // think about args there
     size_t save_game(const std::string& fname) const;
@@ -24,7 +24,7 @@ class World {
     WorldStorage _storage;
     
     size_t cleanup();
-    size_t save_data() const; // prepares data for save
+    size_t save_data() const; // prepares data for saving
 };
 
 #endif

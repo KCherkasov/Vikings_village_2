@@ -44,24 +44,46 @@ size_t World::update() {
 
 std::string World::character_what(const size_t& index) const {
   std::string result;
-  
+  if (index < _character_pool.size()) {
+    if (_character_pool[index] != NULL) {
+      result = _character_pool[index]->what();
+    }
+  }
   return result;
 }
 
 std::string World::character_what(const ssize_t& id) const {
   std::string result;
-  
+  for (size_t i = 0; i < _character_pool.size(); ++i) {
+    if (_character_pool[i] != NULL) {
+      if (_character_pool[i]->id() == id) {
+        result = _character_pool[i]->what();
+        break;
+      }
+    }
+  }
   return result;
 }
 
 std::string World::character_short_what(const size_t& index) const {
   std::string result;
-  
+  if (index < _character_pool.size()) {
+    if (_character_pool[index] != NULL) {
+      result = _character_pool[index]->short_what();
+    }
+  }
   return result;
 }
 
 std::string World::character_short_what(const ssize_t& id) const {
   std::string result;
-  
+  for (size_t i = 0; i < _character_pool.size(); ++i) {
+    if (_character_pool[i] != NULL) {
+      if (_character_pool[i]->id() == id) {
+        result = _character_pool[i]->short_what();
+        break;
+      }
+    }
+  }
   return result;
 }
