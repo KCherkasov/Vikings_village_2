@@ -9,8 +9,6 @@
 #include <cmath>
 #include <cstdlib>
 
-
-
 //-- global constants declaration --//
 
 // default values to initialize variables and class fields

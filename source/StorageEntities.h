@@ -10,6 +10,8 @@
 //-- XxxTemplate must have the same (or almost the same excluding some fields like _to_delete or    --//
 //-- any static fields) fields as Xxx class and also have operators for comparisons and stream I/O. --//
 
+//-- GameCharacter template --//
+
 struct GameCharacterTemplate {
   ssize_t _own_id;
   std::string _name;
@@ -45,5 +47,35 @@ struct GameCharacterTemplate {
   friend std::ofstream& operator << (std::ofstream& stream, const GameCharacterTemplate& data);
   friend std::ifstream& operator >> (std::ifstream& stream, GameCharacterTemplate& data);
 };
+
+//-- GameCharacter template end --//
+
+//-- Battle template --//
+
+struct BattleTemplate {
+  ssize_t _own_id;
+  size_t _turn;
+  std::vector<ssize_t> _vikings; // stores ids of player's vikings involved in this fight
+  std::vector<ssize_t> _enemies; // stores ids of generated enemies involved in this fight
+  
+  BattleTemplate& operator = (const BattleTemplate& rhs) {
+    _own_id = rhs._own_id;
+    _turn = rhs._turn;
+    _vikings.clear();
+    _vikings = rhs._vikings;
+    _enemies.clear();
+    _enemies = rhs._enemies;
+    return *this;
+  }
+  
+  friend bool operator == (const BattleTemplate& lhs, const BattleTemplate& rhs);
+  friend bool operator < (const BattleTemplate& lhs, const BattleTemplate& rhs);
+  friend bool operator > (const BattleTemplate& lhs, const BattleTemplate& rhs);
+  
+  friend std::ofstream& operator << (std::ofstream& stream, const BattleTemplate& data);
+  friend std::ifstream& operator >> (std::ifstream& stream, const BattleTemplate& data);
+};
+
+//-- Battle template end --///
 
 #endif
