@@ -91,6 +91,16 @@ size_t convert_from_string(const std::string& from, T& result) {
   return RC_OK;
 }
 
+template<class T>
+bool vector_has(const std::vector<T>& vect, const T& value) {
+  for (size_t i = 0; i < vect.size(); ++i) {
+    if (vect[i] == value) {
+      return true;
+    }
+  }
+  return false;
+}
+
 //-- functions declaration end --//
 
 #endif

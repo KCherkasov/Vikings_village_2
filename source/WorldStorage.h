@@ -27,6 +27,7 @@ class WorldStorage {
   private:
     TemplateStorage _templates;
     UITextStorage _ui_dictionary;
+    // Need to spawn several managers, each responsible for different scopes. Maybe shall spawn a vector of them and add an enum to designate them in misc.h
     TagManager _manager;
 };
 
