@@ -51,6 +51,12 @@ size_t Battle::clean_dead(std::vector<GameCharacter*>& character_pool) {
   while (!character_pool.empty() && j < character_pool.size()) {
     if (character_pool[j] != NULL) {
       if (character_pool[j]->to_delete()) {
+        if (_turn > START_TURN) {
+          _log += _character_pool[j]->name();
+          _log.append(" ");
+          _log += _manager->tag(BT_DEATH);
+          _log.append(";\n");
+        }
         character_pool.erase(character_pool.begin() + j);
       } else {
         ++j;
@@ -59,10 +65,18 @@ size_t Battle::clean_dead(std::vector<GameCharacter*>& character_pool) {
       character_pool.erase(character_pool.begin() + j);
     }
   }
+  if (_turn > START_TURN) {
+    log.append("\n");
+  }
   return RC_OK;
 }
 
 size_t Battle::cleanup() {
+  if (_turn > START_TURN) {
+    _log.append("Observing the battlefield after ");
+    _log += convert_to_string<size_t>(_turn - 1);
+    _log.append(" round of fight:\n");
+  }
   clean_dead(_vikings);
   clean_dead(_enemies);
   return RC_OK;
@@ -83,11 +97,107 @@ size_t Battle::update_fighters() {
 }
 
 size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_index) {
+  if (vikings_index >= _vikings.size() || enemy_index >= _enemies.size()) {
+    return RC_BAD_INDEX;
+  }
+  if (_vikings[viking_index] == NULL || _enemies[enemy_index] == NULL) {
+    return RC_BAD_INPUT;
+  }
+  _log += _vikings[viking_index]->name();
+  _log.append(" versus ");
+  _log += _enemies[enemy_index]->name();
+  _log.append(":\n");
   return RC_OK;
 }
 
 size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_index, const size_t& stat_id, const size_t& is_hit, const size_t& is_wounded, const bool& viking_strikes) {
-  
+  if (viking_index >= _vikings.size() || enemy_index >= _enemies.size() || stat_id > CS_DEFENSE) {
+    return RC_BAD_INDEX;
+  }
+  if (_vikings[viking_index] == NULL || _enemies[enemy_index] == NULL || _manager == NULL) {
+    return RC_BAD_INPUT;
+  }
+  if (viking_strikes) {
+    _log += _vikings[viking_index]->name();
+  } else {
+    _log += _enemies[enemy_index]->name();
+  }
+  _log.append(" ");
+  if (stat_id == CS_MELEE) {
+    _log += _manager->tag(BT_MELEE_ATTACK_ATTEMPT);
+  }
+  if (stat_id == CS_RANGED) {
+    _log += _manager->tag(BT_RANGED_ATTACK_ATTEMPT);
+  }
+  _log.append(" ");
+  if (viking_strikes) {
+    _log += _enemies[enemy_index]->name();
+  } else {
+    _log += _vikings[viking_index]->name();
+  }
+  _log.append(".\n");
+  if (viking_strikes) {
+    _log += _vikings[viking_index]->name();
+    _log.append(" ");
+    if (is_hit == TO_FIRST_WON) {
+      if (stat_id == CS_MELEE) {
+        _log += _manager->tag(BT_MELEE_ATTACK_SUCCESS);
+      }
+      if (stat_id == CS_RANGED) {
+        _log += _manager->tag(BT_RANGED_ATTACK_SUCCESS);
+      }
+      _log.append(" ");
+      _log += _enemies[enemy_index]->name();
+      _log.append(".\n");
+      _log += _enemies[enemy_index]->name();
+      _log.append(" ");
+      if (is_wounded == TO_FIRST_WON) {
+        _log += _manager->tag(BT_WOUND_MADE);
+      } else {
+        _log += _manager->tag(BT_WOUND_AVOID);
+      }
+    } else {
+      if (stat_id == CS_MELEE) {
+        _log += _manager->tag(BT_MELEE_ATTACK_FAILURE);
+      }
+      if (stat_id == CS_RANGED) {
+        _log += _manager->tag(BT_RANGED_ATTACK_FAILURE);
+      }
+      _log.append(" ");
+      _log += _enemies[enemy_index]->name();
+    }
+  } else {
+    _log += _enemies[enemy_index]->name();
+    _log.append(" ");
+    if (is_hit == TO_FIRST_WON) {
+      if (stat_id == CS_MELEE) {
+        _log += _manager->tag(BT_MELEE_ATTACK_FAILURE);
+      }
+      if (stat_id == CS_RANGED) {
+        _log += _manager->tag(BT_RANGED_ATTACK_FAILURE);
+      }
+      _log.append(" ");
+      _log += _vikings[viking_index]->name();
+    } else {
+      if (stat_id == CS_MELEE) {
+        _log += _manager->tag(BT_MELEE_ATTACK_SUCCESS);
+      }
+      if (stat_id == CS_RANGED) {
+        _log += _manager->tag(BT_RANGED_ATTACK_SUCCESS);
+      }
+      _log.append(" ");
+      _log += _vikings[viking_index]->name();
+      _log.append(".\n");
+      _log += _vikings[viking_index]->name();
+      _log.append(" ");
+      if (is_wounded == TO_FIRST_WON) {
+        _log += _manager->tag(BT_WOUND_AVOID);
+      } else {
+        _log += _manage->tag(BT_WOUND_MADE);
+      }
+    }
+  }
+  _log.append(".\n\n");
   return RC_OK;
 }
 
@@ -147,11 +257,26 @@ size_t Battle::duel(const size_t& viking_index, const size_t& enemy_index) {
   // following code possible needs further revision and modification in terms of fight mechanics tuning
   bool viking_strikes = roll_dice() % 2 == 0; // this shall be changed to an initiative test when this stat'll be added to GameCharacter class
   // during the duel, both warriors make their strike (if they're not dead)
-  
+  bool viking_alive == _vikings[viking_index]->wounds() <= _vikings[viking_index]->wounds_cap();
+  bool enemy_alive == _enemies[enemy_index]->wounds() <= _enemies[enemy_index]->wounds_cap();
+  write_log_entry(viking_index, enemy_index);
+  strike(viking_index, enemy_index, CS_MELEE, viking_strikes);
+  strike(viking_index, enemy_index, CS_MELEE, !viking_strikes);
   return RC_OK;
 }
 
 size_t Battle::fight_round() {
+  _log.append("\nTurn ");
+  _log += convert_to_string<size_t>(_turn);
+  _log.append(":\n");
+  _log += _manager->tag(BT_VIKINGS_COUNT);
+  _log.append(": ");
+  _log += convert_to_string<size_t>(_vikings.size());
+  _log.append("; ");
+  _log += _manager->tag(BT_ENEMIES_COUNT);
+  _log.append(": ");
+  _log += convert_to_string<size_t>(_enemies.size());
+  _log.append(".\n\n");
   std::vector<size_t> vikings_queue;
   std::vector<size_t> enemies_queue;
   make_pairs(vikings_queue, enemies_queue);
@@ -214,10 +339,13 @@ size_t Battle::update() const {
     play_fight_round();
     update_fighters();
   }
+  _log.append("\n\n");
   if (is_victory()) {
     // code here to process victory
+    _log.append("Vikings won!");
   } else {
     // code here to process defeat
+    _log.append("Enemies won!");
   }
   _to_delete = true;
   return RC_OK;
