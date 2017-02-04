@@ -56,49 +56,49 @@ std::string GameCharacter::what() const {
     return result;
   }
   std::string buffer;
-  result += _manager->tag(TL_NAME);
+  result += _manager->tag(CT_NAME);
   result += _name;
-  result += _manager->tag(TL_NAME);
-  result += _manager->tag(TL_DESCRIPTION);
+  result += _manager->tag(CT_NAME);
+  result += _manager->tag(CT_DESCRIPTION);
   result += _description;
-  result += _manager->tag(TL_DESCRIPTION);
-  result += _manager->tag(TL_LEVEL);
+  result += _manager->tag(CT_DESCRIPTION);
+  result += _manager->tag(CT_LEVEL);
   buffer = convert_to_string<ssize_t>(_level);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_LEVEL);
-  result += _manager->tag(TL_STAT_POINTS);
+  result += _manager->tag(CT_LEVEL);
+  result += _manager->tag(CT_STAT_POINTS);
   buffer = convert_to_string<ssize_t>(_stat_points);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_STAT_POINTS);
-  result += _manager->tag(TL_WOUNDS);
+  result += _manager->tag(CT_STAT_POINTS);
+  result += _manager->tag(CT_WOUNDS);
   buffer = convert_to_string<size_t>(_wounds);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_WOUNDS);
-  result += _manager->tag(TL_WOUNDS_CAP);
+  result += _manager->tag(CT_WOUNDS);
+  result += _manager->tag(CT_WOUNDS_CAP);
   buffer = convert_to_string<size_t>(wounds_cap());
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_WOUNDS_CAP);
-  result += _manager->tag(TL_GENDER);
+  result += _manager->tag(CT_WOUNDS_CAP);
+  result += _manager->tag(CT_GENDER);
   buffer = convert_to_string<bool>(_gender);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_GENDER);
+  result += _manager->tag(CT_GENDER);
   for (size_t i = 0; i < _experience.size(); ++i) {
-    result += _manager->tag(TL_EXPERIENCE);
+    result += _manager->tag(CT_EXPERIENCE);
     buffer = convert_to_string<size_t>(_experience[i]);
     result += buffer;
     buffer.clear();
-    result += _manager->tag(TL_EXPERIENCE);
+    result += _manager->tag(CT_EXPERIENCE);
   }
   for (size_t i = 0; i < _stats.size(); ++i) {
-    result += _manager->tag(TL_STATS);
+    result += _manager->tag(CT_STATS);
     buffer = convert_to_string<size_t>(_stats[i]);
     result += buffer;
-    result += _manager->tag(TL_STATS);
+    result += _manager->tag(CT_STATS);
   }
   return result;
 }
@@ -108,25 +108,25 @@ std::string GameCharacter::short_what() const {
   if (_manager == NULL) {
     return result;
   }
-  result += _manager->tag(TL_NAME);
+  result += _manager->tag(CT_NAME);
   result += _name;
-  result += _manager->tag(TL_NAME);
-  result += _manager->tag(TL_LEVEL);
+  result += _manager->tag(CT_NAME);
+  result += _manager->tag(CT_LEVEL);
   std::string buffer = convert_to_string<ssize_t>(_level);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_LEVEL);
+  result += _manager->tag(CT_LEVEL);
   return result;
 }
 
 std::string GameCharacter::talk() const {
   std::string result;
-  result += _manager->tag(TL_NAME);
+  result += _manager->tag(CT_NAME);
   result += _name;
-  result += _manager->tag(TL_NAME);
-  result += _manager->tag(TL_SPEECH);
+  result += _manager->tag(CT_NAME);
+  result += _manager->tag(CT_SPEECH);
   // code to place character's speech there
-  result += _manager->tag(TL_SPEECH);
+  result += _manager->tag(CT_SPEECH);
   return result;
 }
 

@@ -53,6 +53,11 @@ const size_t BASIC_SEED = 15;
 // start turn number
 const size_t START_TURN = 1;
 
+// fight chances plank values in percents. Used to initialize and limit chance values
+const size_t MIN_PLANK_VALUE = 10;
+const size_t BASE_PLANK_VALUE = 50;
+const size_t MAX_PLANK_VALUE = 90;
+
 //-- global constants declaration end --//
 
 //-- enumerations declaration --//
@@ -67,15 +72,30 @@ enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
 enum CharacterStats { CS_MELEE, CS_RANGED, CS_DEFENSE, CS_SIZE };
 
-// tag list for tag manager class
-enum TagList { TL_NAME, TL_DESCRIPTION, TL_LEVEL, TL_STAT_POINTS, TL_WOUNDS, TL_WOUNDS_CAP, TL_GENDER, TL_EXPERIENCE, TL_STATS, TL_SPEECH, TL_TURN, TL_SIZE };
+// test outcome variants
+enum TestOutcomes { TO_FIRST_WON, TO_SECOND_WON, TO_DRAW, TO_SIZE };
+
+// tag managers list
+
+enum TagManagers { TM_CHARACTER, TM_BATTLE, TM_UI, TM_SIZE };
+
+
+// tag lists for tag manager class
+enum CharacterTags { CT_NAME, CT_DESCRIPTION, CT_LEVEL, CT_STAT_POINTS, CT_WOUNDS, CT_WOUNDS_CAP, CT_GENDER, CT_EXPERIENCE, CT_STATS, CT_SPEECH, CT_SIZE };
+enum BattleTags { BT_TURN, BT_VIKINGS_COUNT, BT_ENEMIES_COUNT, BT_MELEE_ATTACK_ATTEMPT, BT_RANGED_ATTACK_ATTEMPT, BT_MELEE_ATTACK_SUCCESS, BT_RANGED_ATTACK_SUCCESS, BT_MELEE_ATTACK_FAILURE, BT_RANGED_ATTACK_FAILURE, BT_WOUND_MADE, BT_WOUND_AVOID, BT_DEATH, BT_SIZE };
+enum UiTags { UT_SIZE };
 
 //-- enumerations declaration end --//
 
 //-- functions declaration --//
 
+// functions for random digits generation
 void seed();
 size_t roll_dice(const size_t& dice = PERCENT_CAP);
+
+// functions for making some char stats tests
+size_t stats_test(const size_t& first_char_stat, const size_t& second_char_stat, const bool& first_strikes);
+bool stats_test(const size_t& stat, const size_t& difficulty = BASE_PLANK_VALUE);
 
 template<class T>
 std::string convert_to_string(const T& value) {

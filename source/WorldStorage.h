@@ -22,13 +22,15 @@ class WorldStorage {
     size_t make_character(GameCharacter*& result, const GameCharacterTemplate& data) const;
     
     UITextStorage* dictionary() const { return const_cast<UITextStorage*>(&_ui_dictionary); }
-    TagManager* manager() const { return const_cast<TagManager*>(&_manager); }
+    TagManager* manager(const size_t& index) const { if(index < _managers.size()) { return const_cast<TagManager*>(&_managers[index]); } else { return NULL; } }
     
   private:
     TemplateStorage _templates;
     UITextStorage _ui_dictionary;
     // Need to spawn several managers, each responsible for different scopes. Maybe shall spawn a vector of them and add an enum to designate them in misc.h
-    TagManager _manager;
+    std::vector<TagManager> _managers;
+    
+    size_t fill_managers();
 };
 
 #endif

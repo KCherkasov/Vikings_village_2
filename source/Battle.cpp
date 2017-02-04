@@ -82,6 +82,58 @@ size_t Battle::update_fighters() {
   return RC_OK;
 }
 
+size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_index) {
+  return RC_OK;
+}
+
+size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_index, const size_t& stat_id, const size_t& is_hit, const size_t& is_wounded, const bool& viking_strikes) {
+  
+  return RC_OK;
+}
+
+size_t Battle::strike(const size_t& viking_index, const size_t& enemy_index, const size_t& stat_id, const bool& viking_strikes) {
+  // strike has two stages - hit and wound.
+  // First is the comparative test if attacker hitted the defender.
+  // If it's successful, then we test the defender on being wounded by that hit.
+  // If defender is wounded, he takes one wound.
+  
+  // stat_id argument added for future usage to process ranged fight through this method too.
+  size_t is_hit = TO_DRAW;
+  size_t is_wounded = TO_DRAW;
+  //defender stat_indices. Vary depend on stat_id value (see comments below)
+  size_t defender_hit_stat = CS_SIZE;
+  size_t defender_wound_stat = CS_SIZE;
+  // for melee fight it is: hit - attacker's melee vs defender's melee; wound - attacker's melee vs defender's defense
+  if (stat_id == CS_MELEE) {
+    defender_hit_stat = CS_MELEE;
+    defender_wound_stat = CS_DEFENSE;
+  }
+  // for ranged fight: hit - attacker's ranged vs defender's defense; wound - the same.
+  if (stat_id == CS_RANGED) {
+    defender_hit_stat = CS_DEFENSE;
+    defender_wound_stat = CS_DEFENSE;
+  }
+  if (viking_strikes) {
+    is_wounded = TO_SECOND_WON;
+  } else {
+    is_wounded = TO_FIRST_WON;
+  }
+  if (viking_strikes) {
+    is_hit = stats_test(_vikings[viking_index]->stats(stat_id), _enemies[enemy_index]->stats(defender_hit_stat), viking_strikes);
+  } else {
+    is_hit = stats_test(_vikings[viking_index]->stats(defender_hit_stat), _enemies[enemy_index]->stats(stat_id), viking_strikes);
+  }
+  if (is_hit != is_wounded) {
+    if (viking_strikes) {
+      is_wounded = stats_test(_vikings[viking_index]->stats(stat_id), _enemies[enemy_index]->stats(defender_wound_stat), viking_strikes);
+    } else {
+      is_wounded = stats_test(_vikings[viking_index]->stats(defender_wound_stat), _enemies[enemy_index]->stats(stat_id), viking_strikes);
+    }
+  }
+  write_log_entry(viking_index, enemy_index, stat_id, is_hit, is_wounded, viking_strikes);
+  return RC_OK;
+}
+
 size_t Battle::duel(const size_t& viking_index, const size_t& enemy_index) {
   if (viking_index >= _vikings.size() || enemy_index >= _enemies.size()) {
     return RC_BAD_INDEX;
@@ -92,6 +144,9 @@ size_t Battle::duel(const size_t& viking_index, const size_t& enemy_index) {
   if (_vikings[viking_index]->to_delete() || _enemies[enemy_index]->to_delete()) {
     return RC_BAD_INPUT;
   }
+  // following code possible needs further revision and modification in terms of fight mechanics tuning
+  bool viking_strikes = roll_dice() % 2 == 0; // this shall be changed to an initiative test when this stat'll be added to GameCharacter class
+  // during the duel, both warriors make their strike (if they're not dead)
   
   return RC_OK;
 }
@@ -130,12 +185,12 @@ std::string Battle::what() const {
   if (_manager == NULL) {
     return result;
   }
-  result += _manager->tag(TL_TURN);
+  result += _manager->tag(BT_TURN);
   std::string buffer;
   convert_to_string<size_t>(_turn, buffer);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_TURN);
+  result += _manager->tag(BT_TURN);
   return result;
 }
 
@@ -144,12 +199,12 @@ std::string Battle::short_what() const {
   if (_manager == NULL) {
     return result;
   }
-  result += _manager->tag(TL_TURN);
+  result += _manager->tag(BT_TURN);
   std::string buffer;
   convert_to_string<size_t>(_turn, buffer);
   result += buffer;
   buffer.clear();
-  result += _manager->tag(TL_TURN);
+  result += _manager->tag(BT_TURN);
   return result;
 }
 
