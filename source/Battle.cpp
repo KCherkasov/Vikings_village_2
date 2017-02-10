@@ -78,11 +78,11 @@ size_t Battle::cleanup() {
     _log.append("Observing the battlefield after ");
     _log += convert_to_string<size_t>(_turn - 1);
     _log.append(" round of fight:\n");
+    _log.append("Vikings squad:\n");
+    clean_dead(_vikings);
+    _log.append("Enemies squad:\n");
+    clean_dead(_enemies);
   }
-  _log.append("Vikings squad:\n");
-  clean_dead(_vikings);
-  _log.append("Enemies squad:\n");
-  clean_dead(_enemies);
   return RC_OK;
 }
 
