@@ -85,8 +85,46 @@ ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
   return RC_OK;
 }
 
+ssize_t UITextStorage::read_battle_log_parts(sqlite3*& connection) {
+  _melee_attack_attempts.clear();
+  _ranged_attack_attempts.clear();
+  _melee_attack_success.clear();
+  _ranged_attack_success.clear();
+  _melee_attack_failure.clear();
+  _ranged_attack_failure.clear();
+  _wound_made.clear();
+  _wound_avoid.clear();
+  sqlite3_stmt* statement;
+  ssize_t response =  sqlite3_prepare(connection, "select count(id) from 'battle'", -1, &statement, 0);
+  sqlite3_step(statement);
+  size_t counter = sqlite3_column_int(statement, 0);
+  sqlite3_finalize(statement);
+  response = sqlite3_prepare(connection, "select id, melee_attempt, ranged_attempt, melee_success, ranged_success, melee_failure, ranged_failure, wound_made, wound_avoid from 'battle'", -1, &statement, 0);
+  for (size_t i = 0; i < counter; ++i) {
+    sqlite3_step(statement);
+    _melee_attack_attempts.push_back(std::string());
+    _melee_attack_attempts[_melee_attack_attempts.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
+    _ranged_attack_attempts.push_back(std::string());
+    _ranged_attack_attempts[_ranged_attack_attempts.size() - 1].append((const char*)(sqlite3_column_text(statement, 2)));
+    _melee_attack_success.push_back(std::string());
+    _melee_attack_success[_melee_attack_success.size() - 1].append((const char*)(sqlite3_column_text(statement, 3)));
+    _ranged_attack_success.push_back(std::string());
+    _ranged_attack_success[_ranged_attack_success.size() - 1].append((const char*)(sqlite3_column_text(statement, 4)));
+    _melee_attack_failure.push_back(std::string());
+    _melee_attack_failure[_melee_attack_failure.size() - 1].append((const char*)(sqlite3_column_text(statement, 5)));
+    _ranged_attack_failure.push_back(std::string());
+    _ranged_attack_failure[_ranged_attack_failure.size() - 1].append((const char*)(sqlite3_column_text(statement, 6)));
+    _wound_made.push_back(std::string());
+    _wound_made[_wound_made.size() - 1].append((const char*)(sqlite3_column_text(statement, 7)));
+    _wound_avoid.push_back(std::string());
+    _wound_avoid[_wound_avoid.size() - 1].append((const char*)(sqlite3_column_text(statement, 8)));
+  }
+  sqlite3_finalize(statement);
+  return response;
+}
+
 bool UITextStorage::is_filled() const {
-  return !_stat_names.empty() && !_character_field_names.empty() && !_character_manager_tags.empty() && !_battle_manager_tags.empty() && !_ui_manager_tags.empty() && !_gender_names.empty();
+  return !_stat_names.empty() && !_character_field_names.empty() && !_gender_names.empty() && !_melee_attack_attempts.empty() && !_ranged_attack_attempts.empty() && !_melee_attack_success.empty() && !_ranged_attack_success.empty() && !_melee_attack_failure.empty() && !_ranged_attack_failure.empty() && !_wound_made.empty() && !_wound_avoid.empty();
 }
 
 size_t UITextStorage::fill_storage(const std::string& db_name) {
@@ -96,6 +134,7 @@ size_t UITextStorage::fill_storage(const std::string& db_name) {
   read_stat_names(database);
   read_manager_tags(database);
   read_gender_names(database);
+  read_battle_log_parts(database);
   close_connection(database);
   return RC_OK;
 }
@@ -103,7 +142,17 @@ size_t UITextStorage::fill_storage(const std::string& db_name) {
 size_t UITextStorage::clear_storage() {
   _character_field_names.clear();
   _stat_names.clear();
-  _manager_tags.clear();
   _gender_names.clear();
+  _character_manager_tags.clear();
+  _battle_manager_tags.clear();
+  _ui_manager_tags.clear();
+  _melee_attack_attempts.clear();
+  _ranged_attack_attempts.clear();
+  _melee_attack_success.clear();
+  _ranged_attack_success.clear();
+  _melee_attack_failure.clear();
+  _ranged_attack_failure.clear();
+  _wound_made.clear();
+  _wound_avoid.clear();
   return RC_OK;
 }

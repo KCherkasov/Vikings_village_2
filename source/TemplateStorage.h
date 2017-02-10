@@ -19,6 +19,8 @@ class TemplateStorage: public BaseStorage {
   private:
     std::vector<std::string> _male_nameparts_begin;
     std::vector<std::string> _male_nameparts_end;
+
+
     std::vector<std::string> _surname_suffixes;
     
     ssize_t read_male_names(sqlite3*& connection);

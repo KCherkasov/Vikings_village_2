@@ -17,7 +17,7 @@ size_t stats_test(const size_t& first_char_stat, const size_t& second_char_stat,
       chance = MIN_PLANK_VALUE;
     }    
   } else {
-    if (first_stat > second_char_stat && first_strikes) {
+    if (first_char_stat > second_char_stat && first_strikes) {
       chance += std::max(first_char_stat, second_char_stat) - std::min(first_char_stat, second_char_stat);
     } else {
       chance -= std::max(first_char_stat, second_char_stat) - std::min(first_char_stat, second_char_stat);

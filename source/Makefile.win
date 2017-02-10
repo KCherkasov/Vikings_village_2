@@ -1,17 +1,17 @@
-# Project: templates_db_test
+# Project: vv2_battle_test
 # Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = templates_db_test.o BaseStorage.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o SQLite/sqlite3.o UITextStorage.o WorldStorage.o
-LINKOBJ  = templates_db_test.o BaseStorage.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o SQLite/sqlite3.o UITextStorage.o WorldStorage.o
-LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
+OBJ      = vv2_battle_test.o BaseStorage.o Battle.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o UITextStorage.o WorldStorage.o SQLite/sqlite3.o
+LINKOBJ  = vv2_battle_test.o BaseStorage.o Battle.o GameCharacter.o GameEntity.o LevelableObject.o misc.o StorageEntities.o TagManager.o TemplateStorage.o UITextStorage.o WorldStorage.o SQLite/sqlite3.o
+LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/lib32" -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
 INCS     = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
-BIN      = templates_db_test.exe
-CXXFLAGS = $(CXXINCS) -m32 -std=c++11 -Wall -g3
-CFLAGS   = $(INCS) -m32 -std=c++11 -Wall -g3
+BIN      = vv2_battle_test.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3
+CFLAGS   = $(INCS) -m32 -g3
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -24,11 +24,14 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-templates_db_test.o: templates_db_test.cpp
-	$(CPP) -c templates_db_test.cpp -o templates_db_test.o $(CXXFLAGS)
+vv2_battle_test.o: vv2_battle_test.cpp
+	$(CPP) -c vv2_battle_test.cpp -o vv2_battle_test.o $(CXXFLAGS)
 
 BaseStorage.o: BaseStorage.cpp
 	$(CPP) -c BaseStorage.cpp -o BaseStorage.o $(CXXFLAGS)
+
+Battle.o: Battle.cpp
+	$(CPP) -c Battle.cpp -o Battle.o $(CXXFLAGS)
 
 GameCharacter.o: GameCharacter.cpp
 	$(CPP) -c GameCharacter.cpp -o GameCharacter.o $(CXXFLAGS)
@@ -51,11 +54,11 @@ TagManager.o: TagManager.cpp
 TemplateStorage.o: TemplateStorage.cpp
 	$(CPP) -c TemplateStorage.cpp -o TemplateStorage.o $(CXXFLAGS)
 
-SQLite/sqlite3.o: SQLite/sqlite3.c
-	$(CC) -c SQLite/sqlite3.c -o SQLite/sqlite3.o $(CFLAGS)
-
 UITextStorage.o: UITextStorage.cpp
 	$(CPP) -c UITextStorage.cpp -o UITextStorage.o $(CXXFLAGS)
 
 WorldStorage.o: WorldStorage.cpp
 	$(CPP) -c WorldStorage.cpp -o WorldStorage.o $(CXXFLAGS)
+
+SQLite/sqlite3.o: SQLite/sqlite3.c
+	$(CC) -c SQLite/sqlite3.c -o SQLite/sqlite3.o $(CFLAGS)

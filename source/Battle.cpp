@@ -1,5 +1,7 @@
 #include "Battle.h"
 
+#include <iostream>
+
 GameCharacter* Battle::get_by_id(const ssize_t& id, const std::vector<GameCharacter*>& character_pool) {
   for (size_t i = 0; i < character_pool.size(); ++i) {
     if (character_pool[i] != NULL) {
@@ -52,7 +54,7 @@ size_t Battle::clean_dead(std::vector<GameCharacter*>& character_pool) {
     if (character_pool[j] != NULL) {
       if (character_pool[j]->to_delete()) {
         if (_turn > START_TURN) {
-          _log += _character_pool[j]->name();
+          _log += character_pool[j]->name();
           _log.append(" ");
           _log += _manager->tag(BT_DEATH);
           _log.append(";\n");
@@ -66,7 +68,7 @@ size_t Battle::clean_dead(std::vector<GameCharacter*>& character_pool) {
     }
   }
   if (_turn > START_TURN) {
-    log.append("\n");
+    _log.append("\n");
   }
   return RC_OK;
 }
@@ -77,7 +79,9 @@ size_t Battle::cleanup() {
     _log += convert_to_string<size_t>(_turn - 1);
     _log.append(" round of fight:\n");
   }
+  _log.append("Vikings squad:\n");
   clean_dead(_vikings);
+  _log.append("Enemies squad:\n");
   clean_dead(_enemies);
   return RC_OK;
 }
@@ -97,7 +101,7 @@ size_t Battle::update_fighters() {
 }
 
 size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_index) {
-  if (vikings_index >= _vikings.size() || enemy_index >= _enemies.size()) {
+  if (viking_index >= _vikings.size() || enemy_index >= _enemies.size()) {
     return RC_BAD_INDEX;
   }
   if (_vikings[viking_index] == NULL || _enemies[enemy_index] == NULL) {
@@ -193,7 +197,7 @@ size_t Battle::write_log_entry(const size_t& viking_index, const size_t& enemy_i
       if (is_wounded == TO_FIRST_WON) {
         _log += _manager->tag(BT_WOUND_AVOID);
       } else {
-        _log += _manage->tag(BT_WOUND_MADE);
+        _log += _manager->tag(BT_WOUND_MADE);
       }
     }
   }
@@ -239,6 +243,13 @@ size_t Battle::strike(const size_t& viking_index, const size_t& enemy_index, con
     } else {
       is_wounded = stats_test(_vikings[viking_index]->stats(defender_wound_stat), _enemies[enemy_index]->stats(stat_id), viking_strikes);
     }
+    if (is_hit == is_wounded) {
+      if (viking_strikes) {
+        _enemies[enemy_index]->add_wounds();
+      } else {
+        _vikings[viking_index]->add_wounds();
+      }
+    }
   }
   write_log_entry(viking_index, enemy_index, stat_id, is_hit, is_wounded, viking_strikes);
   return RC_OK;
@@ -257,16 +268,19 @@ size_t Battle::duel(const size_t& viking_index, const size_t& enemy_index) {
   // following code possible needs further revision and modification in terms of fight mechanics tuning
   bool viking_strikes = roll_dice() % 2 == 0; // this shall be changed to an initiative test when this stat'll be added to GameCharacter class
   // during the duel, both warriors make their strike (if they're not dead)
-  bool viking_alive == _vikings[viking_index]->wounds() <= _vikings[viking_index]->wounds_cap();
-  bool enemy_alive == _enemies[enemy_index]->wounds() <= _enemies[enemy_index]->wounds_cap();
+  bool viking_alive = _vikings[viking_index]->wounds() <= _vikings[viking_index]->wounds_cap();
+  bool enemy_alive = _enemies[enemy_index]->wounds() <= _enemies[enemy_index]->wounds_cap();
   write_log_entry(viking_index, enemy_index);
   strike(viking_index, enemy_index, CS_MELEE, viking_strikes);
   strike(viking_index, enemy_index, CS_MELEE, !viking_strikes);
+  _log.append("\n");
   return RC_OK;
 }
 
 size_t Battle::fight_round() {
-  _log.append("\nTurn ");
+  _log.append("\n\n");
+  _log += _manager->tag(BT_TURN);
+  _log.append(" ");
   _log += convert_to_string<size_t>(_turn);
   _log.append(":\n");
   _log += _manager->tag(BT_VIKINGS_COUNT);
@@ -281,7 +295,8 @@ size_t Battle::fight_round() {
   std::vector<size_t> enemies_queue;
   make_pairs(vikings_queue, enemies_queue);
   for (size_t i = 0; i < vikings_queue.size(); ++i) {
-    duel(vikings_queue[i], enemies_queue[i]);  
+    duel(vikings_queue[i], enemies_queue[i]);
+    _log.append("\n");
   }
   ++_turn;
   return RC_OK;
@@ -311,10 +326,7 @@ std::string Battle::what() const {
     return result;
   }
   result += _manager->tag(BT_TURN);
-  std::string buffer;
-  convert_to_string<size_t>(_turn, buffer);
-  result += buffer;
-  buffer.clear();
+  result += convert_to_string<size_t>(_turn);
   result += _manager->tag(BT_TURN);
   return result;
 }
@@ -325,18 +337,18 @@ std::string Battle::short_what() const {
     return result;
   }
   result += _manager->tag(BT_TURN);
-  std::string buffer;
-  convert_to_string<size_t>(_turn, buffer);
-  result += buffer;
-  buffer.clear();
+  result += convert_to_string<size_t>(_turn);
   result += _manager->tag(BT_TURN);
   return result;
 }
 
-size_t Battle::update() const {
-  while (!is_victory() && !is_defeat()) {
+size_t Battle::update() {
+  while (true) {
     cleanup();
-    play_fight_round();
+    if (is_victory() || is_defeat()) {
+      break;
+    }
+    fight_round();
     update_fighters();
   }
   _log.append("\n\n");

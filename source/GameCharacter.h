@@ -10,6 +10,7 @@ class GameCharacter: public LevelableObject {
     virtual ~GameCharacter() {}
     ssize_t stat_points() const { return _stat_points; }
     size_t wounds() const { return _wounds; }
+    size_t wounds_cap() const;
     size_t add_wounds(const size_t& amount = 1);
     size_t remove_wounds(const size_t& amount = 1);
     bool gender() const { return _gender; }
@@ -33,7 +34,6 @@ class GameCharacter: public LevelableObject {
     std::vector<size_t> _stats;
     
     size_t level_up();
-    size_t wounds_cap() const;
 };
 
 #endif
