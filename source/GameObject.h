@@ -5,9 +5,8 @@
 
 class GameObject: public GameEntity {
   public:
-    GameObject(const ssize_t& id = FREE_ID): GameEntity(id) { _name.clear(); _description.clear(); _to_delete = false; }
+    GameObject(const ssize_t& id = FREE_ID): GameEntity(id) { _name.clear(); _description.clear(); }
     virtual ~GameObject() {}
-    ssize_t id() const { return _own_id; }
     std::string name() const { return _name; }
     std::string description() const { return _description; }
   protected:

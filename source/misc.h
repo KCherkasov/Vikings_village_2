@@ -58,6 +58,10 @@ const size_t MIN_PLANK_VALUE = 10;
 const size_t BASE_PLANK_VALUE = 50;
 const size_t MAX_PLANK_VALUE = 90;
 
+// items cost and bonuses rise per quality grade in percents
+const size_t BASIC_RISE = 75; // basic stats and cost rise used for IK_TRASH rarity items
+const size_t RISE_PER_GRADE = 25; // bonus per each grade above IK_TRASH
+
 //-- global constants declaration end --//
 
 //-- enumerations declaration --//
@@ -71,6 +75,16 @@ enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
 // character stat list enumeration
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
 enum CharacterStats { CS_MELEE, CS_RANGED, CS_DEFENSE, CS_SIZE };
+
+// item rarities enumeration
+enum ItemRarity { IR_TRASH, IR_COMMON, IR_GOOD, IR_RARE, IR_EPIC, IR_LEGENDARY, IR_SIZE };
+
+// item kinds enumeration
+enum ItemKinds { IK_HELMET, IK_CHEST, IK_HANDS, IK_BOOTS, IK_MAIN_HAND, IK_OFF_HAND, IK_RANGED, IK_SIZE }
+
+// resources enumeration
+// WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
+enum ResourceIndices { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };
 
 // test outcome variants
 enum TestOutcomes { TO_FIRST_WON, TO_SECOND_WON, TO_DRAW, TO_SIZE };

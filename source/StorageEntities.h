@@ -50,6 +50,39 @@ struct GameCharacterTemplate {
 
 //-- GameCharacter template end --//
 
+//-- Item template --//
+
+struct ItemTemplate {
+  ssize_t _own_id;
+  std::string _name;
+  std::string _description;
+  ssize_t _level;
+  size_t _kind;
+  size_t _rarity;
+  std::vector<size_t> _cost;
+  std::vector<size_t> _bonuses;
+  
+  ItemTemplate& operator = (const ItemTemplate& rhs) {{
+    _own_id = rhs._own_id;
+    _name = rhs._name;
+    _description = rhs._description;
+    _kind = rhs._kind;
+    _rarity = rhs._rarity;
+    _cost = rhs._cost;
+    _bonuses = rhs._bonuses;
+    return *this;
+  }
+  
+  friend bool operator == (const ItemTemplate& lhs, const ItemTemplate& rhs);
+  friend bool operator < (const ItemTemplate& lhs, const ItemTemplate& rhs);
+  friend bool operator > (const ItemTemplate& lhs, const ItemTemplate& rhs);
+  
+  friend std::ofstream& operator << (std::ofstream& stream, const ItemTemplate& data);
+  friend std::ifstream& operator >> (std::ifstream& stream, ItemTemplate& data);
+};
+
+//-- Item template end --//
+
 //-- Battle template --//
 
 struct BattleTemplate {
@@ -73,7 +106,7 @@ struct BattleTemplate {
   friend bool operator > (const BattleTemplate& lhs, const BattleTemplate& rhs);
   
   friend std::ofstream& operator << (std::ofstream& stream, const BattleTemplate& data);
-  friend std::ifstream& operator >> (std::ifstream& stream, const BattleTemplate& data);
+  friend std::ifstream& operator >> (std::ifstream& stream, BattleTemplate& data);
 };
 
 //-- Battle template end --///
