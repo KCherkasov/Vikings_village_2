@@ -25,6 +25,7 @@ class GameCharacter: public LevelableObject {
     std::string short_what() const;
     std::string talk() const; // method for getting character replies on various situations (think about args, we shall somehow tell the character about the situation he/she'll talk about)
     size_t update();
+    GameCharacterTemplate save_data() const;
     size_t increase_stat(const size_t& index, const size_t& shift = 1);
   protected:
     ssize_t _stat_points;

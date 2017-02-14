@@ -37,6 +37,28 @@ ssize_t TemplateStorage::read_surname_suffixes(sqlite3*& connection) {
   return response;
 }
 
+ssize_t TemplateStorage::read_item_part_generals(sqlite3*& connection) {
+  
+}
+
+ssize_t TemplateStorage::read_item_part_costs(sqlite3*& connection) {
+  
+}
+
+ssize_t TemplateStorage::read_item_part_bonuses(sqlite3*& connection) {
+  
+}
+
+ssize_t TemplateStorage::read_item_parts(sqlite3*& connection) {
+  size_t generals_counter = SIZE_T_DEFAULT_VALUE;
+  size_t costs_counter = SIZE_T_DEFAULT_VALUE;
+  size_t bonuses_counter = SIZE_T_DEFAULT_VALUE;
+  read_item_part_generals(connection);
+  read_item_part_costs(connection);
+  read_item_part_bonuses(connection);
+  return RC_OK;
+}
+
 std::string TemplateStorage::male_name() const {
   std::string name;
   name += _male_nameparts_begin[roll_dice(_male_nameparts_begin.size())];

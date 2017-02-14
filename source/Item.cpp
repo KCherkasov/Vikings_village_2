@@ -30,3 +30,19 @@ std::string Item::short_what() const {
 size_t Item::update() const {
   return RC_OK;
 }
+
+ItemTemplate Item::save_data() const {
+  ItemTemplate data;
+  data._own_id = _own_id;
+  data._name.clear();
+  data._name = _name;
+  data._description.clear();
+  data._description = _description;
+  data._kind = _kind;
+  data._rarity = _rarity;
+  data._cost.clear();
+  data._cost = _cost;
+  data._bonuses.clear();
+  data._bonuses = _bonuses;
+  return data;
+}

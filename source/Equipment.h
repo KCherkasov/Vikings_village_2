@@ -1,12 +1,12 @@
-#ifndef VIKINGS_ITEM_H
-#define VIKINGS_ITEM_H
+#ifndef VIKINGS_EQUIPMENT_H
+#define VIKINGS_EQUIPMENT_H
 
-#include "LevelableObject.h"
+#include "Item.h"
 
-class Item: public GameObject {
+class Equipment: public Item {
   public:
-    Item(const ItemTemplate& data);
-    ~Item() {}
+    Equipment(const ItemTemplate& data);
+    ~Equipment() {}
     std::vector<size_t> bonuses() const { return _bonuses; }
     size_t bonuses(const size_t& index) const { return _bonuses[index]; }
     size_t cost() const { return _cost; }
@@ -20,7 +20,7 @@ class Item: public GameObject {
     size_t _kind;
     size_t _rarity;
     std::vector<size_t> _cost;
-    std::vector<size_t> _bonuses;
+    std::vector<size_t> _bonuses;  
 };
 
 #endif

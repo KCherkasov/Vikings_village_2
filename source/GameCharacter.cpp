@@ -141,6 +141,24 @@ size_t GameCharacter::update() {
   return RC_OK;
 }
 
+GameCharacterTemplate GameCharacter::save_data() const {
+  GameCharacterTemplate data;
+  data._own_id = _own_id;
+  data._name.clear();
+  data._name = _name;
+  data._description.clear();
+  data._description = _description;
+  data._level = _level;
+  data._stat_points = _stat_points;
+  data._wounds = _wounds;
+  data._gender = _gender;
+  data._experience.clear();
+  data._experience = _experience;
+  data._stats.clear();
+  data._stats = _stats;
+  return data;
+}
+
 size_t GameCharacter::increase_stat(const size_t& index, const size_t& shift) {
   if (index >= _stats.size()) {
     return RC_BAD_INDEX;

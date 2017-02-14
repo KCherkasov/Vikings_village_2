@@ -50,6 +50,44 @@ struct GameCharacterTemplate {
 
 //-- GameCharacter template end --//
 
+//-- ItemPart template --//
+
+struct ItemPartTemplate {
+  ssize_t _own_id;
+  std::string _name;
+  std::string _description;
+  size_t _kind;
+  size_t _place;
+  size_t _rarity;
+  std::vector<size_t> _cost;
+  std::vector<size_t> _bonuses;
+  
+  ItemPartTemplate& operator = (const ItemPartTemplate& rhs) {
+    _own_id = rhs._own_id;
+    _name.clear();
+    _name = rhs._name;
+    _description.clear();
+    _description = rhs._description;
+    _kind = rhs._kind;
+    _place = rhs._place;
+    _rarity = rhs._rarity;
+    _cost.clear();
+    _cost = rhs._cost;
+    _bonuses.clear();
+    _bonuses = rhs._bonuses;
+    return *this;
+  }
+  
+  friend bool operator == (const ItemPartTemplate& lhs, const ItemPartTemplate& rhs);
+  friend bool operator < (const ItemPartTemplate& lhs, const ItemPartTemplate& rhs);
+  friend bool operator > (const ItemPartTemplate& lhs, const ItemPartTemplate& rhs);
+  
+  friend std::ofstream& operator << (std::ofstream& stream, const ItemPartTemplate& data);
+  friend std::ifstream& operator >> (std::ifstream& stream, ItemPartTemplate& data);
+};
+
+//-- ItemPart template end --//
+
 //-- Item template --//
 
 struct ItemTemplate {
@@ -62,7 +100,7 @@ struct ItemTemplate {
   std::vector<size_t> _cost;
   std::vector<size_t> _bonuses;
   
-  ItemTemplate& operator = (const ItemTemplate& rhs) {{
+  ItemTemplate& operator = (const ItemTemplate& rhs) {
     _own_id = rhs._own_id;
     _name = rhs._name;
     _description = rhs._description;
