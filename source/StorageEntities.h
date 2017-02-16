@@ -21,7 +21,7 @@ struct GameCharacterTemplate {
   size_t _wounds;
   bool _gender;
   std::vector<size_t> _experience;
-  std::vector<size_t> _stats;
+  std::vector<ssize_t> _stats;
   
   GameCharacterTemplate& operator = (const GameCharacterTemplate& rhs) {
     _own_id = rhs._own_id;
@@ -60,7 +60,7 @@ struct ItemPartTemplate {
   size_t _place;
   size_t _rarity;
   std::vector<size_t> _cost;
-  std::vector<size_t> _bonuses;
+  std::vector<ssize_t> _bonuses;
   
   ItemPartTemplate& operator = (const ItemPartTemplate& rhs) {
     _own_id = rhs._own_id;
@@ -97,8 +97,7 @@ struct ItemTemplate {
   ssize_t _level;
   size_t _kind;
   size_t _rarity;
-  std::vector<size_t> _cost;
-  std::vector<size_t> _bonuses;
+  std::vector<ssize_t> _parts;
   
   ItemTemplate& operator = (const ItemTemplate& rhs) {
     _own_id = rhs._own_id;
@@ -106,8 +105,8 @@ struct ItemTemplate {
     _description = rhs._description;
     _kind = rhs._kind;
     _rarity = rhs._rarity;
-    _cost = rhs._cost;
-    _bonuses = rhs._bonuses;
+    _parts.clear();
+    _parts = rhs._parts;
     return *this;
   }
   

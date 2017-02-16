@@ -197,10 +197,7 @@ bool operator == (const ItemTemplate& lhs, const ItemTemplate& rhs) {
   if (lhs._rarity != rhs._rarity) {
     return false;
   }
-  if (lhs._cost != rhs._cost) {
-    return false;
-  }
-  if (lhs._bonuses != rhs._bonuses) {
+  if (lhs._parts != rhs._parts) {
     return false;
   }
   return true;
@@ -221,13 +218,9 @@ std::ofstream& operator << (std::ofstream& stream, const ItemTemplate& data) {
     stream << data._description;
     stream << data._kind;
     stream << data._rarity;
-    stream << data._cost.size();
-    for (size_t i = 0; i < data._cost.size(); ++i) {
-      stream << data._cost[i];
-    }
-    stream << data._bonuses.size();
-    for (size_t i = 0; i < data._bonuses.size(); ++i) {
-      stream << data._bonuses[i];
+    stream << data._parts.size();
+    for (size_t i = 0; i < data._parts.size(); ++i) {
+      stream << data._parts[i];
     }
   }
   return stream;
@@ -242,18 +235,11 @@ std::ifstream& operator >> (std::ifstream& stream, ItemTemplate& data) {
     stream >> data._rarity;
     size_t counter = SIZE_T_DEFAULT_VALUE;
     stream >> counter;
-    data._cost.clear();
+    data._parts.clear();
     for (size_t i = 0; i < counter; ++i) {
-      size_t buffer = SIZE_T_DEFAULT_VALUE;
+      ssize_t buffer = SSIZE_T_DEFAULT_VALUE;
       stream >> buffer;
-      data._cost.push_back(buffer);
-    }
-    stream >> counter;
-    data._bonuses.clear();
-    for (size_t i = 0; i < counter; ++i) {
-      size_t buffer = SIZE_T_DEFAULT_VALUE;
-      stream >> buffer;
-      data._bonuses.push_back(buffer);
+      data._parts.push_back(buffer);
     }
   }
   return stream;

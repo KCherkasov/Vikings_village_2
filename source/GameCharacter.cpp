@@ -96,7 +96,7 @@ std::string GameCharacter::what() const {
   }
   for (size_t i = 0; i < _stats.size(); ++i) {
     result += _manager->tag(CT_STATS);
-    buffer = convert_to_string<size_t>(_stats[i]);
+    buffer = convert_to_string<ssize_t>(_stats[i]);
     result += buffer;
     result += _manager->tag(CT_STATS);
   }
@@ -159,10 +159,12 @@ GameCharacterTemplate GameCharacter::save_data() const {
   return data;
 }
 
-size_t GameCharacter::increase_stat(const size_t& index, const size_t& shift) {
+size_t GameCharacter::increase_stat(const size_t& index, const ssize_t& shift) {
   if (index >= _stats.size()) {
     return RC_BAD_INDEX;
   }
-  _stats[index] += shift;
+  if (_stat_points > SSIZE_T_DEFAULT_VALUE) {
+    _stats[index] += shift;
+  }
   return RC_OK;
 }

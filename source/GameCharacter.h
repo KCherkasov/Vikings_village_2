@@ -19,20 +19,21 @@ class GameCharacter: public LevelableObject {
     size_t defense() const;
     std::vector<size_t> experience() const { return _experience; }
     size_t experience(const size_t& index) { return _experience[index]; }
-    std::vector<size_t> stats() const { return _stats; }
-    size_t stats(const size_t& index) const { return _stats[index]; }
+    std::vector<ssize_t> stats() const { return _stats; }
+    ssize_t stats(const ssize_t& index) const { return _stats[index]; }
     std::string what() const;
     std::string short_what() const;
     std::string talk() const; // method for getting character replies on various situations (think about args, we shall somehow tell the character about the situation he/she'll talk about)
     size_t update();
     GameCharacterTemplate save_data() const;
-    size_t increase_stat(const size_t& index, const size_t& shift = 1);
+    size_t increase_stat(const size_t& index, const ssize_t& shift = 1);
+    size_t increase_experience(const size_t& amount) { _experience[PI_CURRENT] += amount; return RC_OK; }
   protected:
     ssize_t _stat_points;
     size_t _wounds; // amount of damage TAKEN by the character. Healthy character has 0 wounds.
     bool _gender;
     std::vector<size_t> _experience;
-    std::vector<size_t> _stats;
+    std::vector<ssize_t> _stats;
     
     size_t level_up();
 };

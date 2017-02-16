@@ -86,6 +86,9 @@ enum ItemKinds { IK_HELMET, IK_CHEST, IK_HANDS, IK_BOOTS, IK_MAIN_HAND, IK_OFF_H
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
 enum ResourceIndices { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };
 
+// item parts enumeration
+enum ItempartsList { IL_FIRST, IL_SECOND, IL_THIRD, IL_SIZE };
+
 // test outcome variants
 enum TestOutcomes { TO_FIRST_WON, TO_SECOND_WON, TO_DRAW, TO_SIZE };
 
