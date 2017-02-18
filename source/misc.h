@@ -80,7 +80,7 @@ enum CharacterStats { CS_MELEE, CS_RANGED, CS_DEFENSE, CS_SIZE };
 enum ItemRarity { IR_TRASH, IR_COMMON, IR_GOOD, IR_RARE, IR_EPIC, IR_LEGENDARY, IR_SIZE };
 
 // item kinds enumeration
-enum ItemKinds { IK_HELMET, IK_CHEST, IK_HANDS, IK_BOOTS, IK_MAIN_HAND, IK_OFF_HAND, IK_RANGED, IK_SIZE }
+enum ItemKinds { IK_HELMET, IK_CHEST, IK_HANDS, IK_BOOTS, IK_MAIN_HAND, IK_OFF_HAND, IK_RANGED, IK_SIZE };
 
 // resources enumeration
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms

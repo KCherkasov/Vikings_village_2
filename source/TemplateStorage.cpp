@@ -20,6 +20,26 @@ ssize_t TemplateStorage::read_male_names(sqlite3*& connection) {
   return response;
 }
 
+ssize_t TemplateStorage::read_female_names(sqlite3*& connection) {
+  _female_nameparts_begin.clear();
+  _female_nameparts_end.clear();
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'female_nameparts'", -1, &statement, 0);
+  sqlite3_step(statement);
+  size_t count = sqlite3_column_int(statement, 0);
+  sqlite3_finalize(statement);
+  response = sqlite3_prepare(connection, "select id, first, second from 'female_nameparts'", -1, &statement, 0);
+  for (size_t i = 0; i < count; ++i) {
+    sqlite3_step(statement);
+    _female_nameparts_begin.push_back(std::string());
+    _female_nameparts_begin[_female_nameparts_begin.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
+    _female_nameparts_end.push_back(std::string());
+    _female_nameparts_end[_female_nameparts_end.size() - 1].append((const char*)(sqlite3_column_text(statement, 2)));
+  }
+  sqlite3_finalize(statement);
+  return response;
+}
+
 ssize_t TemplateStorage::read_surname_suffixes(sqlite3*& connection) {
   _surname_suffixes.clear();
   sqlite3_stmt* statement;
@@ -38,18 +58,19 @@ ssize_t TemplateStorage::read_surname_suffixes(sqlite3*& connection) {
 }
 
 ssize_t TemplateStorage::read_item_part_generals(sqlite3*& connection) {
-  
+  return RC_OK;
 }
 
 ssize_t TemplateStorage::read_item_part_costs(sqlite3*& connection) {
-  
+  return RC_OK;
 }
 
 ssize_t TemplateStorage::read_item_part_bonuses(sqlite3*& connection) {
-  
+  return RC_OK;
 }
 
 ssize_t TemplateStorage::read_item_parts(sqlite3*& connection) {
+  // _item_part_templates.clear();
   size_t generals_counter = SIZE_T_DEFAULT_VALUE;
   size_t costs_counter = SIZE_T_DEFAULT_VALUE;
   size_t bonuses_counter = SIZE_T_DEFAULT_VALUE;
@@ -67,8 +88,9 @@ std::string TemplateStorage::male_name() const {
 }
 
 std::string TemplateStorage::female_name() const {
-  std::string name("fem_name_here");
-  
+  std::string name;
+  name += _female_nameparts_begin[roll_dice(_female_nameparts_begin.size())];
+  name += _female_nameparts_end[roll_dice(_female_nameparts_end.size())];
   return name;
 }
 
@@ -85,14 +107,16 @@ std::string TemplateStorage::surname(const bool& gender) const {
 }
 
 bool TemplateStorage::is_filled() const {
-  return !_male_nameparts_begin.empty() && !_male_nameparts_end.empty() && !_surname_suffixes.empty();
+  return !_male_nameparts_begin.empty() && !_male_nameparts_end.empty() && !_female_nameparts_begin.empty() && !_female_nameparts_end.empty() && !_surname_suffixes.empty();
 }
 
 size_t TemplateStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
   open_connection(db_name, database);
   read_male_names(database);
+  read_female_names(database);
   read_surname_suffixes(database);
+  read_item_parts(database);
   close_connection(database);
   return RC_OK;
 }
@@ -100,7 +124,10 @@ size_t TemplateStorage::fill_storage(const std::string& db_name) {
 size_t TemplateStorage::clear_storage() {
   _male_nameparts_begin.clear();
   _male_nameparts_end.clear();
+  _female_nameparts_begin.clear();
+  _female_nameparts_end.clear();
   _surname_suffixes.clear();
+  // _item_part_templates.clear();
   return RC_OK;
 }
 
