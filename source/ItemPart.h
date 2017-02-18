@@ -9,6 +9,7 @@ class ItemPart: public GameObject {
     ItemPart(const ItemPart& data);
     virtual ~ItemPart() {}
     size_t kind() const { return _kind; }
+    size_t group() const { return _group; }
     size_t place() const { return _place; }
     size_t rarity() const { return _rarity; }
     std::vector<size_t> cost() { return _cost; }
@@ -22,6 +23,7 @@ class ItemPart: public GameObject {
     size_t dispose() { _to_delete = true; return RC_OK; }
   protected:
     size_t _kind;
+    size_t _group;
     size_t _place;
     size_t _rarity;
     std::vector<size_t> _cost;

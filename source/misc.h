@@ -82,6 +82,9 @@ enum ItemRarity { IR_TRASH, IR_COMMON, IR_GOOD, IR_RARE, IR_EPIC, IR_LEGENDARY, 
 // item kinds enumeration
 enum ItemKinds { IK_HELMET, IK_CHEST, IK_HANDS, IK_BOOTS, IK_MAIN_HAND, IK_OFF_HAND, IK_RANGED, IK_SIZE };
 
+// item parts groups enumeration
+enum PartGroups { PG_HELMET, PG_CHEST, PG_HANDS, PG_BOOTS, PG_AXE, PG_SWORD, PG_SPEAR, PG_SHIELD, PG_BOW, PG_SIZE };
+
 // resources enumeration
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
 enum ResourceIndices { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };

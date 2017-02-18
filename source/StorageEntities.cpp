@@ -107,6 +107,9 @@ bool operator == (const ItemPartTemplate& lhs, const ItemPartTemplate& rhs) {
   if (lhs._kind != rhs._kind) {
     return false;
   }
+  if (lhs._group != rhs._group) {
+    return false;
+  }
   if (lhs._place != rhs._place) {
     return false;
   }

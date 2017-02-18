@@ -57,6 +57,7 @@ struct ItemPartTemplate {
   std::string _name;
   std::string _description;
   size_t _kind;
+  size_t _group;
   size_t _place;
   size_t _rarity;
   std::vector<size_t> _cost;
@@ -69,6 +70,7 @@ struct ItemPartTemplate {
     _description.clear();
     _description = rhs._description;
     _kind = rhs._kind;
+    _group = rhs._group;
     _place = rhs._place;
     _rarity = rhs._rarity;
     _cost.clear();
