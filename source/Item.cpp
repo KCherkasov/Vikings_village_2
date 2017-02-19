@@ -19,6 +19,12 @@ Item::Item(const ItemTemplate& data, const std::vector<GameObject*>& pool): Game
   }
 }
 
+Item::~Item() {
+  for (size_t i = 0; i < _parts.size(); ++i) {
+    _parts[i] = NULL;
+  }
+}
+
 std::vector<ssize_t> Item::bonuses() const {
   std::vector<ssize_t> result;
   if (!_parts.empty()) {
@@ -80,7 +86,21 @@ size_t Item::cost(const size_t& index) const {
 std::string Item::what() const {
   std::string result;
   if (_manager != NULL) {
-    
+    result += _name;
+    result += _description;
+    result += convert_to_string<size_t>(_kind);
+    result += convert_to_string<size_t>(_rarity);
+    for (size_t i = 0; i < RI_SIZE; ++i) {
+      result += convert_to_string<size_t>(cost(i));
+    }
+    for (size_t i = 0; i < CS_SIZE; ++i) {
+      result += convert_to_string<ssize_t>(bonuses(i));
+    }
+    for (size_t i = 0; i < _parts.size(); ++i) {
+      if (_parts[i] != NULL) {
+        result += _parts[i]->short_what();
+      }
+    }
   }
   return result;
 }
@@ -88,7 +108,12 @@ std::string Item::what() const {
 std::string Item::short_what() const {
   std::string result;
   if (_manager != NULL) {
-    
+    result += _name;
+    result += convert_to_string<size_t>(_kind);
+    result += convert_to_string<size_t>(_rarity);
+    for (size_t i = 0; i < CS_SIZE; ++i) {
+      result += convert_to_string<ssize_t>(bonuses(i));
+    }
   }
   return result;
 }

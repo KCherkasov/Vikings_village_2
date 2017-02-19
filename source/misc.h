@@ -62,12 +62,19 @@ const size_t MAX_PLANK_VALUE = 90;
 const size_t BASIC_RISE = 75; // basic stats and cost rise used for IK_TRASH rarity items
 const size_t RISE_PER_GRADE = 25; // bonus per each grade above IK_TRASH
 
+// item raritiy chances
+const size_t COMMON_CHANCE = 75;
+const size_t GOOD_CHANCE = 25;
+const size_t RARE_CHANCE = 13;
+const size_t EPIC_CHANCE = 6;
+const size_t LEGENDARY_CHANCE = 3;
+
 //-- global constants declaration end --//
 
 //-- enumerations declaration --//
 
 // used for marking functions and methods ending and future error handling
-enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_BAD_INDEX, RC_NO_MANAGER, RC_HAS_MANAGER, RC_SIZE };
+enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_BAD_INDEX, RC_NO_MANAGER, RC_HAS_MANAGER, RC_RTTI_ERROR, RC_SIZE };
 
 // two-elements array indices and size, used to designated current state and max value of some stats
 enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
@@ -75,6 +82,9 @@ enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
 // character stat list enumeration
 // WARNING: altering this one will cause the necessity of rebuilding db structure and data retrieval algorithms
 enum CharacterStats { CS_MELEE, CS_RANGED, CS_DEFENSE, CS_SIZE };
+
+// item blueprint indices
+enum ItemBlueprint { IB_KIND, IB_GROUP, IB_RARITY, IB_FIRST, IB_SECOND, IB_THIRD, IB_SIZE };
 
 // item rarities enumeration
 enum ItemRarity { IR_TRASH, IR_COMMON, IR_GOOD, IR_RARE, IR_EPIC, IR_LEGENDARY, IR_SIZE };

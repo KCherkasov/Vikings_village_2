@@ -58,19 +58,83 @@ ssize_t TemplateStorage::read_surname_suffixes(sqlite3*& connection) {
 }
 
 ssize_t TemplateStorage::read_item_part_generals(sqlite3*& connection) {
-  return RC_OK;
+  if (_item_part_templates.empty()) {
+    return RC_BAD_INPUT;
+  }
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'item_part_generals'", -1, &statement, 0);
+  sqlite3_step(statement);
+  size_t counter = sqlit3_column_int(statement, 0);
+  sqlite3_finalize(statement);
+  if (counter != _item_part_templates.size()) {
+    return RC_BAD_INPUT;
+  }
+  response = sqlite3_prepare(connection, "select id, name, description, kind, group, place, rarity from 'item_part_generals'", -1, &statement, 0);
+  for (size_t i = 0; i < counter; ++i) {
+    sqlite3_step(statement);
+    _item_part_templates[i]._name.clear();
+    _item_part_templates[i]._name.append((const char*)(sqlite3_column_text(statement, 1)));
+    _item_part_templates[i]._description.clear();
+    _item_part_templates[i]._description.append((const char*)(sqlite3_column_text(statement, 2)));
+    _item_part_templates[i]._kind = sqlite3_column_int(statement, 3);
+    _item_part_templates[i]._group = sqlite3_column_int(statement, 4);
+    _item_part_templates[i]._place = sqlite3_column_int(statement, 5);
+    _item_part_templates[i]._rarity = sqlite3_column_int(statement, 6);
+  }
+  sqlite3_finalize(statement);
+  return response;
 }
 
 ssize_t TemplateStorage::read_item_part_costs(sqlite3*& connection) {
-  return RC_OK;
+  if (_item_part_templates.empty()) {
+    return RC_BAD_INPUT;
+  }
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'item_part_costs'", -1, &statement, 0);
+  sqlite3_step(statement);
+  size_t counter = sqlite3_column_int(statement, 0);
+  sqlite3_finalize(statement);  
+  if (counter != _item_part_templates.size()) {
+    return RC_BAD_INPUT;
+  }
+  response = sqlite3_prepare(connection, "select id, gold, food, wood, iron, leather from 'item_part_costs'", -1, &statement, 0);
+  for (size_t i = 0; i < counter; ++i) {
+    sqlite3_step(statement);
+    _item_part_templates[i]._cost.clear();
+    for (size_t j = 1; j <= RI_SIZE; ++j) {
+      _item_part_templates[i]._cost.push_back(sqlite3_column_int(statement, j));
+    }
+  }
+  sqlite3_finalize(statement);
+  return response;
 }
 
 ssize_t TemplateStorage::read_item_part_bonuses(sqlite3*& connection) {
-  return RC_OK;
+  if (_item_part_templates.empty()) {
+    return RC_BAD_INPUT;
+  }
+  sqlite3_stmt* statement;
+  ssize_t response = sqlite3_prepare(connection, "select count(id) from 'item_part_bonuses'", -1, &statement, 0);
+  sqlite3_step(statement);
+  size_t counter = sqlite3_column_int(statement, 0);
+  sqlite3_finalize(statement);  
+  if (counter != _item_part_templates.size()) {
+    return RC_BAD_INPUT;
+  }
+  response = sqlite3_prepare(connection, "select id, melee, ranged, defense from 'item_part_bonuses'", -1, &statement, 0);
+  for (size_t i = 0; i < counter; ++i) {
+    sqlite3_step(statement);
+    _item_part_templates[i]._bonuses.clear();
+    for (size_t j = 1; j <= CS_SIZE; ++j) {
+      _item_part_templates[i]._bonuses.push_back(sqlite3_column_int(statement, j));
+    }
+  }
+  sqlite3_finalize(statement);
+  return response;
 }
 
 ssize_t TemplateStorage::read_item_parts(sqlite3*& connection) {
-  // _item_part_templates.clear();
+  _item_part_templates.clear();
   size_t generals_counter = SIZE_T_DEFAULT_VALUE;
   size_t costs_counter = SIZE_T_DEFAULT_VALUE;
   size_t bonuses_counter = SIZE_T_DEFAULT_VALUE;
@@ -127,7 +191,7 @@ size_t TemplateStorage::clear_storage() {
   _female_nameparts_begin.clear();
   _female_nameparts_end.clear();
   _surname_suffixes.clear();
-  // _item_part_templates.clear();
+  _item_part_templates.clear();
   return RC_OK;
 }
 
@@ -215,6 +279,45 @@ GameCharacterTemplate TemplateStorage::make_character_template(const bool& gende
     if (result._stats[stat_id] < STAT_MAX_VALUE) {
       ++result._stats[stat_id];
       --result._stat_points;
+    }
+  }
+  return result;
+}
+
+ItemPartTemplate TemplateStorage::make_item_part_template(const size_t& group, const size_t& place, const size_t& rarity) const {
+  ItemPartTemplate result;
+  result._own_id = FREE_ID;
+  result._name.clear();
+  result._description.clear();
+  result._cost.clear();
+  resul._bonuses.clear();
+  while (true) {
+    size_t index = roll_dice(_item_part_templates.size());
+    if (_item_part_templates[index]._group == group && _item_part_templates[index]._place == place) {
+      result = _item_part_templates[index];
+      if (rarity == IR_SIZE) {
+        if (result._rarity == IR_SIZE) {
+          size_t chance = roll_dice();
+          if (chance <= LEGENDARY_CHANCE) {
+            result._rarity = IR_LEGENDARY;
+          } else if (chance <= EPIC_CHANCE) {
+            result._rarity = IR_EPIC;
+          } else if (chance <= RARE_CHANCE) {
+            result._rarity = IR_RARE;
+          } else if (chance <= GOOD_CHANCE) {
+            result._rarity = IR_GOOD;
+          } else if (chance <= COMMON_CHANCE) {
+            result._rarity = IR_COMMON;
+          } else {
+            result._rarity = IR_TRASH;
+          }
+        }
+      } else {
+        if (result._rarity == IR_SIZE) {
+          result._rarity = rarity;
+        }
+      }
+      break;
     }
   }
   return result;

@@ -6,11 +6,12 @@
 class Item: public GameObject {
   public:
     Item(const ItemTemplate& data, const std::vector<GameObject*>& pool);
-    ~Item() {}
+    ~Item();
     std::vector<ssize_t> bonuses() const;
     size_t bonuses(const ssize_t& index) const;
     std::vector<size_t> cost() const;
     size_t cost(const size_t& index) const;
+    ItemPart* part() const { return _parts[i]; }
     std::string what() const;
     std::string short_what() const;
     size_t update();

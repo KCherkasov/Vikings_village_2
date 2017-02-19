@@ -16,8 +16,10 @@ class TemplateStorage: public BaseStorage {
     GameCharacterTemplate make_character_template(const ssize_t& level = START_LEVEL) const;
     GameCharacterTemplate make_character_template(const bool& gender, const ssize_t& level = START_LEVEL) const;
     
-    // ItemPartTemplate make_item_part_template(const size_t& rarity = IR_COMMON) const;
-  
+    ItemPartTemplate make_item_part_template(const size_t& group, const size_t& place, const size_t& rarity = IR_SIZE) const;
+
+    std::vector<ssize_t> make_item_blueprint(const size_t& index) const;
+
   private:
     std::vector<std::string> _male_nameparts_begin;
     std::vector<std::string> _male_nameparts_end;
@@ -25,7 +27,8 @@ class TemplateStorage: public BaseStorage {
     std::vector<std::string> _female_nameparts_begin;
     std::vector<std::string> _female_nameparts_end;
     
-    // std::vector<ItemPartTemplate> _item_part_templates;
+    std::vector<ItemPartTemplate> _item_part_templates;
+    std::vector<std::vector<ssize_t> > _item_blueprints;
 
     std::vector<std::string> _surname_suffixes;
     
@@ -38,6 +41,8 @@ class TemplateStorage: public BaseStorage {
     ssize_t read_item_part_bonuses(sqlite3*& connection);
     
     ssize_t read_item_parts(sqlite3*& connection);
+    
+    ssize_t read_item_blueprints(sqlite3*& connection);
     
     std::string male_name() const;
     std::string female_name() const;
