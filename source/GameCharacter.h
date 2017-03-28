@@ -14,9 +14,9 @@ class GameCharacter: public LevelableObject {
     size_t add_wounds(const size_t& amount = 1);
     size_t remove_wounds(const size_t& amount = 1);
     bool gender() const { return _gender; }
-    size_t melee_skill() const;
-    size_t ranged_skill() const;
-    size_t defense() const;
+    ssize_t melee_skill() const;
+    ssize_t ranged_skill() const;
+    ssize_t defense() const;
     std::vector<size_t> experience() const { return _experience; }
     size_t experience(const size_t& index) { return _experience[index]; }
     std::vector<ssize_t> stats() const { return _stats; }

@@ -32,20 +32,20 @@ size_t GameCharacter::remove_wounds(const size_t& amount) {
   return RC_OK;
 }
 
-size_t GameCharacter::melee_skill() const {
-  size_t skill = SIZE_T_DEFAULT_VALUE;
+ssize_t GameCharacter::melee_skill() const {
+  ssize_t skill = SIZE_T_DEFAULT_VALUE;
   skill += _stats[CS_MELEE];
   return skill;
 }
 
-size_t GameCharacter::ranged_skill() const {
-  size_t skill = SIZE_T_DEFAULT_VALUE;
+ssize_t GameCharacter::ranged_skill() const {
+  ssize_t skill = SIZE_T_DEFAULT_VALUE;
   skill += _stats[CS_RANGED];
   return skill;
 }
 
-size_t GameCharacter::defense() const {
-  size_t defense = SIZE_T_DEFAULT_VALUE;
+ssize_t GameCharacter::defense() const {
+  ssize_t defense = SIZE_T_DEFAULT_VALUE;
   defense += _stats[CS_DEFENSE];
   return defense;
 }
