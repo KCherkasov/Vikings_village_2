@@ -17,8 +17,6 @@ class Battle: public GameEntity {
     std::vector<GameCharacter*> _enemies;
     std::string _log;
     
-    GameCharacter* get_by_id(const ssize_t& id, const std::vector<GameCharacter*>& character_pool);
-    
     size_t random_character_index(const std::vector<GameCharacter*>& character_pool, const std::vector<size_t>& keys) const;
     size_t make_pairs(std::vector<size_t>& vikings_queue, std::vector<size_t>& enemies_queue) const;
     

@@ -10,6 +10,9 @@ size_t WorldStorage::fill_managers() {
   for (size_t i = 0; i < _ui_dictionary.character_tags_count(); ++i) {
     _managers[TM_CHARACTER].add_tag(_ui_dictionary.character_tag(i));
   }
+  for (size_t i = 0; i < _ui_dictionary.inv_item_tags_count(); ++i) {
+    _managers[TM_INV_ITEM].add_tag(_ui_dictionary.inv_item_tag(i));
+  }
   for (size_t i = 0; i < _ui_dictionary.battle_tags_count(); ++i) {
     _managers[TM_BATTLE].add_tag(_ui_dictionary.battle_tag(i));
   }

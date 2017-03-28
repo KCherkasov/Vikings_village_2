@@ -64,7 +64,7 @@ ssize_t TemplateStorage::read_item_part_generals(sqlite3*& connection) {
   sqlite3_stmt* statement;
   ssize_t response = sqlite3_prepare(connection, "select count(id) from 'item_part_generals'", -1, &statement, 0);
   sqlite3_step(statement);
-  size_t counter = sqlit3_column_int(statement, 0);
+  size_t counter = sqlite3_column_int(statement, 0);
   sqlite3_finalize(statement);
   if (counter != _item_part_templates.size()) {
     return RC_BAD_INPUT;
@@ -141,6 +141,10 @@ ssize_t TemplateStorage::read_item_parts(sqlite3*& connection) {
   read_item_part_generals(connection);
   read_item_part_costs(connection);
   read_item_part_bonuses(connection);
+  return RC_OK;
+}
+
+ssize_t TemplateStorage::read_item_blueprints(sqlite3*& connection) {
   return RC_OK;
 }
 
@@ -290,7 +294,7 @@ ItemPartTemplate TemplateStorage::make_item_part_template(const size_t& group, c
   result._name.clear();
   result._description.clear();
   result._cost.clear();
-  resul._bonuses.clear();
+  result._bonuses.clear();
   while (true) {
     size_t index = roll_dice(_item_part_templates.size());
     if (_item_part_templates[index]._group == group && _item_part_templates[index]._place == place) {
@@ -321,4 +325,10 @@ ItemPartTemplate TemplateStorage::make_item_part_template(const size_t& group, c
     }
   }
   return result;
+}
+
+std::vector<ssize_t> TemplateStorage::make_item_blueprint(const size_t& index) const {
+  std::vector<ssize_t> blueprint;
+
+  return blueprint;
 }

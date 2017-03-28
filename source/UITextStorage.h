@@ -23,6 +23,8 @@ class UITextStorage: public BaseStorage {
     std::string gender_name(const size_t& index) const { return _gender_names[index]; }
     size_t character_tags_count() const { return _character_manager_tags.size(); }
     std::string character_tag(const size_t& index) const { return _character_manager_tags[index]; }
+    size_t inv_item_tags_count() const { return _inv_item_manager_tags.size(); }
+    std::string inv_item_tag(const size_t& index) const { return _inv_item_manager_tags[index]; }
     size_t battle_tags_count() const { return _battle_manager_tags.size(); }
     std::string battle_tag(const size_t& index) const { return _battle_manager_tags[index]; }
     size_t ui_tags_count() const { return _ui_manager_tags.size(); }
@@ -50,6 +52,7 @@ class UITextStorage: public BaseStorage {
     std::vector<std::string> _gender_names;
     
     std::vector<std::string> _character_manager_tags;
+    std::vector<std::string> _inv_item_manager_tags;
     std::vector<std::string> _battle_manager_tags;
     std::vector<std::string> _ui_manager_tags;
 
@@ -61,12 +64,13 @@ class UITextStorage: public BaseStorage {
     std::vector<std::string> _ranged_attack_failure;
     std::vector<std::string> _wound_made;
     std::vector<std::string> _wound_avoid;
-        
+
     ssize_t read_character_field_names(sqlite3*& connection);
     ssize_t read_stat_names(sqlite3*& connection);
     ssize_t read_gender_names(sqlite3*& connection);
 
     ssize_t read_character_tags(sqlite3*& connection);
+    ssize_t read_inv_item_tags(sqlite3*& connection);
     ssize_t read_battle_tags(sqlite3*& connection);
     ssize_t read_ui_tags(sqlite3*& connection);
     ssize_t read_manager_tags(sqlite3*& connection);

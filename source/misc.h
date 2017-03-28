@@ -107,10 +107,11 @@ enum TestOutcomes { TO_FIRST_WON, TO_SECOND_WON, TO_DRAW, TO_SIZE };
 
 // tag managers list
 
-enum TagManagers { TM_CHARACTER, TM_BATTLE, TM_UI, TM_SIZE };
+enum TagManagers { TM_CHARACTER, TM_INV_ITEM, TM_BATTLE, TM_UI, TM_SIZE };
 
 // tag lists for tag manager class
 enum CharacterTags { CT_NAME, CT_DESCRIPTION, CT_LEVEL, CT_STAT_POINTS, CT_WOUNDS, CT_WOUNDS_CAP, CT_GENDER, CT_EXPERIENCE, CT_STATS, CT_SPEECH, CT_SIZE };
+enum InvitemTags { IT_NAME, IT_DESCRIPTION, IT_KIND, IT_GROUP, IT_PLACE, IT_RARITY, IT_BONUSES, IT_COST, IT_SLOT, IT_EMPTY_SLOT, IT_STAT, IT_SIZE };
 enum BattleTags { BT_TURN, BT_VIKINGS_COUNT, BT_ENEMIES_COUNT, BT_MELEE_ATTACK_ATTEMPT, BT_RANGED_ATTACK_ATTEMPT, BT_MELEE_ATTACK_SUCCESS, BT_RANGED_ATTACK_SUCCESS, BT_MELEE_ATTACK_FAILURE, BT_RANGED_ATTACK_FAILURE, BT_WOUND_MADE, BT_WOUND_AVOID, BT_DEATH, BT_SIZE };
 enum UiTags { UT_GENDER_NOMINATIVE, UT_GENDER_POSESSIVE, UT_SIZE };
 
@@ -148,6 +149,46 @@ bool vector_has(const std::vector<T>& vect, const T& value) {
     }
   }
   return false;
+}
+
+// binary search for GameEntity derivative class object in objects pool by object's id
+// WARNING: T class must have a public ssize_t id() const method
+// for this function to work properly
+template<class T>
+T* get_by_id(const ssize_t& id, const std::vector<T*>& pool) {
+  if (id < SSIZE_T_DEFAULT_VALUE || pool.empty()) {
+    return NULL;
+  }
+  size_t left_border = SIZE_T_DEFAULT_VALUE;
+  size_t right_border = pool.size();
+  while (left_border < right_border) {
+    size_t middle = (left_border + right_border) / 2;
+    if (pool[middle] == NULL) {
+      size_t step = 1;
+      while (pool[middle] == NULL && step <= middle) {
+        if (pool[middle - step] != NULL) {
+          middle -= step;
+          break;          
+        } else if (pool[std::min(pool.size(), middle + step)] != NULL) {
+          middle = std::min(pool.size(), middle + step);
+          break;
+        }
+        ++step;
+      }
+    }
+    if (id <= pool[middle]->id()) {
+      right_border = middle;
+    } else {
+      left_border = middle + 1;
+    }
+  }
+  if (left_border >= pool.size() || pool[left_border] == NULL) {
+    return NULL;
+  } else if (pool[left_border]->id() != id) {
+    return NULL;
+  } else {
+    return pool[left_border];
+  }
 }
 
 //-- functions declaration end --//

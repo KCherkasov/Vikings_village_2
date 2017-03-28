@@ -11,6 +11,7 @@ class Item: public GameObject {
     size_t bonuses(const ssize_t& index) const;
     std::vector<size_t> cost() const;
     size_t cost(const size_t& index) const;
+    size_t rarity() const;
     ItemPart* part() const { return _parts[i]; }
     std::string what() const;
     std::string short_what() const;
@@ -19,7 +20,6 @@ class Item: public GameObject {
     size_t dispose();
   protected:
     size_t _kind;
-    size_t _rarity;
     std::vector<ItemPart*> _parts;
 };
 

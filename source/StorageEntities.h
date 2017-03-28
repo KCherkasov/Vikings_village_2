@@ -96,9 +96,7 @@ struct ItemTemplate {
   ssize_t _own_id;
   std::string _name;
   std::string _description;
-  ssize_t _level;
   size_t _kind;
-  size_t _rarity;
   std::vector<ssize_t> _parts;
   
   ItemTemplate& operator = (const ItemTemplate& rhs) {
@@ -106,7 +104,6 @@ struct ItemTemplate {
     _name = rhs._name;
     _description = rhs._description;
     _kind = rhs._kind;
-    _rarity = rhs._rarity;
     _parts.clear();
     _parts = rhs._parts;
     return *this;
@@ -121,6 +118,22 @@ struct ItemTemplate {
 };
 
 //-- Item template end --//
+
+//-- Inventory template --//
+
+struct InventoryTemplate {
+  ssize_t _own_id;
+  std::vector<ssize_t> _item_ids;
+  
+  friend bool operator == (const InventoryTemplate& lhs, const InventoryTemplate& rhs);
+  friend bool operator < (const InventoryTemplate& lhs, const InventoryTemplate& rhs);
+  friend bool operator > (const InventoryTemplate& lhs, const InventoryTemplate& rhs);
+  
+  friend std::ofstream& operator << (std::ofstream& stream, const InventoryTemplate& data);
+  friend std::ifstream& operator >> (std::ifstream& stream, InventoryTemplate& data);
+};
+
+//-- Inventory template end --//
 
 //-- Battle template --//
 

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>100</y>
+      <w>310</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>/GameEntity/
+--
+_#id: ssize_t = FREE_ID_
+#own_id: ssize_t
+#to_delete: bool
+#manager: TagManager*
+--
++GameEntity(id: const ssize_t&amp;)
+/+~GameEntity()/
++id(): ssize_t const
++to_delete(): bool const
++manager(): TagManager*
++set_manager(manager: TagManager*): size_t
+/+what(): std::string const/
+/+short_what(): std::string const/
+/+update(): size_t/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>460</y>
+      <w>220</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>/GameObject/
+--
+#name: std::string
+#description: std::string
+--
++GameObject(id: const ssize_t&amp;)
+/+~GameObject()/
++name(): std::string const
++description(): std::string const</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>0</y>
+      <w>200</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>FREE_ID: const ssize_t = -1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>20</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-
+used to initialize 
+_id static field
+        v</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>340</y>
+      <w>520</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>500.0;10.0;500.0;70.0;10.0;70.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>700</y>
+      <w>370</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>/LevelableObject/
+--
+#level: ssize_t
+
+#increase_level(shift: const ssize_t&amp;): size_t
+#decrease_level(shift: const ssize_t&amp;): size_t
+/#level_up(): size_t/
+--
++LevelableObject(id: const ssize_t&amp;, level: const size_t&amp;)
+/+~LevelableObject()/
++level(): ssize_t const
++set_level(level: const ssize_t&amp;): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>590</y>
+      <w>360</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>340.0;10.0;340.0;60.0;10.0;60.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>700</y>
+      <w>300</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>ItemPart
+--
+#kind: size_t
+#group: size_t
+#place: size_t
+#rarity: size_t
+#cost: std::vector&lt;size_t&gt;
+#bonuses: std::vector&lt;ssize_t&gt;
+--
++ItemPart(data: ItemPartTemplate&amp;)
+/+~ItemPart()/
++kind(): size_t const
++group(): size_t const
++place(): size_t const
++rarity(): size_t const
++cost(index: const size_t&amp;): size_t const
++cost(): std::vector&lt;size_t&gt; const
++bonuses(index: const size_t&amp;): ssize_t const
++bonuses(): std::vector&lt;ssize_t&gt; const
++what(): std::string const
++short_what(): std::string const
++upadte(): size_t
++save_data(): ItemPartTemplate const
++dispose(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>640</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>70.0;60.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>700</y>
+      <w>300</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Item
+--
+#kind: size_t
+#parts: std::vector&lt;ItemPart*&gt;
+--
++Item(data: const ItemTemplate&amp;)
+/+~Item()/
++kind(): size_t
++bonuses(index: const size_t&amp;): ssize_t const
++bonuses(): std::vector&lt;ssize_t&gt; const
++cost(index: const size_t&amp;): size_t const
++cost(): std::vector&lt;size_t&gt; const
++part(index: const size_t&amp;): ItemPart* const
++rarity(): size_t const
++what(): std::string const
++short_what(): std::string const
++update(): size_t
++save_data(): ItemTemplate const
++dispose(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>640</y>
+      <w>490</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>470.0;60.0;470.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>820</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=3</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

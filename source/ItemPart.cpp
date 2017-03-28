@@ -1,16 +1,8 @@
 #include "ItemPart.h"
 
-ItemPart::ItemPart(const ItemPartTemplate& data): GamObject(data._own_id) {
+ItemPart::ItemPart(const ItemPartTemplate& data): GameObject(data._own_id), _kind(data._kind), _group(data._group), _rarity(data._rarity), _place(data._place), _cost(data._cost), _bonuses(data._bonuses) {
   _name = data._name;
-  _description =  data._description;
-  _kind = data._kind;
-  _group = data._group;
-  _rarity = data._rarity;
-  _place = data._place;
-  _cost.clear();
-  _cost = data._cost;
-  _bonuses.clear();
-  _bonuses = data._bonuses;  
+  _description =  data._description;  
 }
 
 // add proper manager tags mark-up

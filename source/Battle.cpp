@@ -1,18 +1,5 @@
 #include "Battle.h"
 
-#include <iostream>
-
-GameCharacter* Battle::get_by_id(const ssize_t& id, const std::vector<GameCharacter*>& character_pool) {
-  for (size_t i = 0; i < character_pool.size(); ++i) {
-    if (character_pool[i] != NULL) {
-      if (character_pool[i]->id() == id) {
-        return character_pool[i];
-      }
-    }
-  }
-  return NULL;
-}
-
 size_t Battle::random_character_index(const std::vector<GameCharacter*>& character_pool, const std::vector<size_t>& keys) const {
   while(true) {
     if (character_pool.empty()) {
@@ -306,14 +293,14 @@ Battle::Battle(const BattleTemplate& data, const std::vector<GameCharacter*>& ch
   _turn = START_TURN;
   _vikings.clear();
   for (size_t i = 0; i < data._vikings.size(); ++i) {
-    GameCharacter* to_add = get_by_id(data._vikings[i], character_pool);
+    GameCharacter* to_add = get_by_id<GameCharacter>(data._vikings[i], character_pool);
     if (to_add != NULL) {
       _vikings.push_back(to_add);
     }
   }
   _enemies.clear();
   for (size_t i = 0; i < data._enemies.size(); ++i) {
-    GameCharacter* to_add = get_by_id(data._enemies[i], character_pool);
+    GameCharacter* to_add = get_by_id<GameCharacter>(data._enemies[i], character_pool);
     if (to_add != NULL) {
       _enemies.push_back(to_add);
     }

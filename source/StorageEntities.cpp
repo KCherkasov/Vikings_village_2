@@ -197,9 +197,6 @@ bool operator == (const ItemTemplate& lhs, const ItemTemplate& rhs) {
   if (lhs._kind != rhs._kind) {
     return false;
   }
-  if (lhs._rarity != rhs._rarity) {
-    return false;
-  }
   if (lhs._parts != rhs._parts) {
     return false;
   }
@@ -220,7 +217,6 @@ std::ofstream& operator << (std::ofstream& stream, const ItemTemplate& data) {
     stream << data._name;
     stream << data._description;
     stream << data._kind;
-    stream << data._rarity;
     stream << data._parts.size();
     for (size_t i = 0; i < data._parts.size(); ++i) {
       stream << data._parts[i];
@@ -235,7 +231,6 @@ std::ifstream& operator >> (std::ifstream& stream, ItemTemplate& data) {
     stream >> data._name;
     stream >> data._description;
     stream >> data._kind;
-    stream >> data._rarity;
     size_t counter = SIZE_T_DEFAULT_VALUE;
     stream >> counter;
     data._parts.clear();
@@ -249,6 +244,47 @@ std::ifstream& operator >> (std::ifstream& stream, ItemTemplate& data) {
 }
 
 //-- Item template end --//
+
+//-- Inventory template --//
+
+bool operator == (const InventoryTemplate& lhs, const InventoryTemplate& rhs) {
+  if (lhs._own_id != rhs._own_id) {
+    return false;
+  }
+  if (lhs._item_ids != rhs._item_ids) {
+    return false;
+  }
+  return true;
+}
+
+bool operator < (const InventoryTemplate& lhs, const InventoryTemplate& rhs) {
+  return lhs._own_id < rhs._own_id;
+}
+
+bool operator > (const InventoryTemplate& lhs, const InventoryTemplate& rhs) {
+  return lhs._own_id > rhs._own_id;
+}
+
+std::ofstream& operator << (std::ofstream& stream, const InventoryTemplate& data) {
+  stream << data._own_id;
+  for (size_t i = 0; i < data._item_ids.size(); ++i) {
+    stream << data._item_ids[i];
+  }
+  return stream;
+}
+
+std::ifstream& operator >> (std::ifstream& stream, InventoryTemplate& data) {
+  stream >> data._own_id;
+  data._item_ids.clear();
+  for (size_t i = 0; i < IK_SIZE; ++i) {
+    ssize_t buffer;
+    stream >> buffer;
+    data._item_ids.push_back(buffer);
+  }
+  return stream;
+}
+
+//-- Inventory template end --//
 
 //-- Battle template --//
 
