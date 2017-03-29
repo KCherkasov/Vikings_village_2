@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
+      <x>1608</x>
       <y>40</y>
       <w>124</w>
       <h>100</h>
@@ -30,7 +30,7 @@ _#id: ssize_t = FREE_ID_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>348</x>
+      <x>1436</x>
       <y>184</y>
       <w>88</w>
       <h>56</h>
@@ -49,7 +49,7 @@ _#id: ssize_t = FREE_ID_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
+      <x>1608</x>
       <y>0</y>
       <w>80</w>
       <h>12</h>
@@ -60,7 +60,7 @@ _#id: ssize_t = FREE_ID_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>552</x>
+      <x>1640</x>
       <y>8</y>
       <w>52</w>
       <h>40</h>
@@ -74,7 +74,7 @@ _id static field
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>388</x>
+      <x>1476</x>
       <y>136</y>
       <w>208</w>
       <h>56</h>
@@ -85,7 +85,7 @@ _id static field
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>164</x>
+      <x>1252</x>
       <y>280</y>
       <w>168</w>
       <h>72</h>
@@ -107,7 +107,7 @@ _id static field
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>1328</x>
       <y>236</y>
       <w>160</w>
       <h>52</h>
@@ -118,7 +118,7 @@ _id static field
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>352</x>
+      <x>1440</x>
       <y>280</y>
       <w>120</w>
       <h>148</h>
@@ -152,7 +152,7 @@ _id static field
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>388</x>
+      <x>1476</x>
       <y>256</y>
       <w>36</w>
       <h>32</h>
@@ -163,7 +163,7 @@ _id static field
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
+      <x>1628</x>
       <y>280</y>
       <w>120</w>
       <h>116</h>
@@ -192,7 +192,7 @@ _id static field
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>412</x>
+      <x>1500</x>
       <y>256</y>
       <w>196</w>
       <h>32</h>
@@ -203,7 +203,7 @@ _id static field
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
+      <x>1556</x>
       <y>328</y>
       <w>80</w>
       <h>16</h>
@@ -216,7 +216,7 @@ m2=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>164</x>
+      <x>1252</x>
       <y>380</y>
       <w>168</w>
       <h>212</h>
@@ -260,7 +260,7 @@ m2=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>244</x>
+      <x>1332</x>
       <y>348</y>
       <w>12</w>
       <h>40</h>
@@ -271,7 +271,7 @@ m2=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
+      <x>1808</x>
       <y>280</y>
       <w>232</w>
       <h>84</h>
@@ -295,7 +295,7 @@ m2=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
+      <x>1672</x>
       <y>160</y>
       <w>260</w>
       <h>128</h>
@@ -306,7 +306,7 @@ m2=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>656</x>
+      <x>1744</x>
       <y>324</y>
       <w>72</w>
       <h>16</h>
@@ -319,7 +319,7 @@ m2=7</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>328</x>
+      <x>1416</x>
       <y>360</y>
       <w>520</w>
       <h>136</h>
@@ -332,7 +332,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>1388</x>
       <y>708</y>
       <w>216</w>
       <h>176</h>
@@ -370,7 +370,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>248</x>
+      <x>1336</x>
       <y>588</y>
       <w>20</w>
       <h>80</h>
@@ -382,7 +382,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>248</x>
+      <x>1336</x>
       <y>424</y>
       <w>176</w>
       <h>244</h>
@@ -394,7 +394,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>404</x>
+      <x>1492</x>
       <y>392</y>
       <w>216</w>
       <h>276</h>
@@ -406,7 +406,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>404</x>
+      <x>1492</x>
       <y>656</y>
       <w>52</w>
       <h>60</h>
@@ -422,23 +422,25 @@ handles actions</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
+      <x>1488</x>
       <y>880</y>
-      <w>12</w>
+      <w>156</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
-m2=1</panel_attributes>
+m2=1
+provides new and loaded game objects instantiation ^
+provide game objects with corresponding tag managers ^</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
+      <x>1264</x>
       <y>928</y>
-      <w>448</w>
-      <h>144</h>
+      <w>452</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>WorldStorage
 --
@@ -457,10 +459,713 @@ m2=1</panel_attributes>
 +make_character(result: GameCharacter*&amp;, level: const ssize_t&amp;): size_t const
 +make_character(result: GameCharacter*&amp;, data: const GameCharacterTemplate&amp;): size_t const
 +make_item_part(result: ItemPart*&amp;, index: const size_t&amp;): size_t const
++make_item_part(result: ItemPart*&amp;, kind: const size_t&amp;, place: const size_t&amp;, { group: const size_t&amp; }): size_t const
 +make_item_part(result: ItemPart*&amp;, data: const ItemPartTemplate&amp;): size_t const
++make_item(result: Item*&amp;, blueprint_id: const size_t&amp;, items_pool: std::vector&lt;GameObject*&gt;&amp;): size_t const
++make_item(result: Item*&amp;, data: const ItemTemplate&amp;, items_pool
 +make_battle(result: Battle*&amp;, character_pool: const std::vector&lt;GameCharacter*&gt;, viking_ids: const std::vector&lt;ssize_t&gt;&amp;, enemy_ids: const std::vector&lt;ssize_t&gt;&amp;): size_t const
 +dictionary(): UITextStorage* const
 +manager(index: const size_t&amp;): TagManager* const</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>312</x>
+      <y>1092</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>/BaseStorage/
+--
+#open_connection(db_name: const std::string&amp;, sqlite3*&amp; connection): ssize_t
+#close_connection(sqlite3*&amp; connection): ssize_t
+--
++BaseStorage()
+/+~BaseStorage()/
+/+fill_storage(db_name: const std::string&amp;): size_t/
+/+clear_storage(): size_t/
+/+is_filled(): bool const/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>1256</y>
+      <w>296</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>TemplateStorage
+--
+-male_nameparts_begin: std::vector&lt;std::string&gt;
+-male_nameparts_end: std::vector&lt;std::string&gt;
+-female_nameparts_begin: std::vector&lt;std::string&gt;
+-female_nameparts_end: std::vector&lt;std::string&gt;
+-item_part_templates: std::vector&lt;ItemPartTemplate&gt;
+-item_blueprints: std::vector&lt;std::vector&lt;ssize_t&gt; &gt;
+-surname_suffixes: std::vector&lt;std::string&gt;
+
+-read_male_names(connection: sqlite3*&amp;): ssize_t
+-read_female_names(connection: sqlite3*&amp;): ssize_t
+-read_surname_suffixes(connection: sqlite3*&amp;): ssize_t
+-read_item_part_generals(connection: sqlite3*&amp;): ssize_t
+-read_item_part_bonuses(connection: sqlte3*&amp;): ssize_t
+-read_item_part_costs(connection: sqlite3*&amp;): ssize_t
+-read_item_parts(connection: sqlite3*&amp;): ssize_t
+-read_item_blueprints(connection: sqlite3*&amp;): ssize_t
+-male_name(): std::string const
+-female_name(): std::string const
+-surname(): std::string const
+--
++TemplateStorage()
+/+~TemplateStorage()/
++fill_storage(db_name: const std::string&amp;): size_t
++clear_storage(): size_t
++is_filled(): bool const
++make_character_template(level: const ssize_t&amp;): GameCharacterTemplate const
++make_character_template(gender: const bool&amp;, level: const ssize_t&amp;): GameCharacterTemplate const
++make_item_part_template(group: const size_t&amp;, place: const size_t&amp;, rarity: const size_t&amp;): ItemPartTemplate const
++make_item_blueprint(index: const size_t&amp;): std::vector&lt;ssize_t&gt; const</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>792</y>
+      <w>300</w>
+      <h>396</h>
+    </coordinates>
+    <panel_attributes>UITextStorage
+--
+-character_field_names: std::vector&lt;std::string&gt;
+-stat_names: std::vector&lt;std::string&gt;
+-gender_names: std::vector&lt;std::string&gt;
+-character_manager_tags: std::vector&lt;std::string&gt;
+-inv_item_manager_tags: std::vector&lt;std::string&gt;
+-battle_manager_tags: std::vector&lt;std::string&gt;
+-ui_manager_tags: std::vector&lt;std::string&gt;
+-melee_attack_attempts: std::vector&lt;std::string&gt;
+-ranged_attack_attempts: std::vector&lt;std::string&gt;
+-melee_attack_success: std::vector&lt;std::string&gt;
+-ranged_attack_success: std::vector&lt;std::string&gt;
+-melee_attack_failure: std::vector&lt;std::string&gt;
+-ranged_attack_failure: std::vector&lt;std::string&gt;
+-wound_made: std::vector&lt;std::string&gt;
+-wound_avoid: std::vector&lt;std::string&gt;
+
+-read_character_field_names(connection: sqlite3*&amp;): ssize_t
+-read_stat_names(connection: sqlite3*&amp;): ssize_t
+-read_gender_names(connection: sqlite3*&amp;): ssize_t
+-read_character_tags(connection: sqlite3*&amp;): ssize_t
+-read_inv_item_tags(connection: sqlite3*&amp;): ssize_t
+-read_battle_tags(connection: sqlite3*&amp;): ssize_t
+-read_ui_tags(connection: sqlite3*&amp;): ssize_t
+-read_manager_tags(connection: sqlite3*&amp;): ssize_t
+-read_battle_log_parts(connection: sqlite3*&amp;): ssize_t
+--
++UITextStorage()
+/+~UITextStorage()/
++fill_storage(db_name: const std::string&amp;): size_t
++clear_storage(): size_t
++is_filled(): bool const
++character_field_names_count(): size_t const
++character_field_name(index: const size_t&amp;): std::string const
++stat_names_count(): size_t const
++stat_name(index: const size_t&amp;): std::string const
++gender_names_count(): size_t const
++gender_name(index: const size_t&amp;): std::string const
++character_tags_count(): size_t const
++character_tag(index: const size_t&amp;): std::string const
++inv_item_tags_count(): size_t const
++inv_item_tag(index: const size_t&amp;): std::string const
++battle_tags_count(): size_t const
++battle_tag(index: const size_t&amp;): std::string const
++melee_attempts_count(): size_t const
++melee_attempt(index: const size_t&amp;): std::string const
++ranged_attempts_count(): size_t const
++ranged_attempt(index: const size_t&amp;): std::string const
++melee_success_count(): size_t const
++melee_success(index: const size_t&amp;): std::string const
++ranged_success_count(): size_t const
++ranged_success(index: const size_t&amp;): std::string const
++melee_failures_count(): size_t const
++melee_failure(index: const size_t&amp;): std::string const
++ranged_failures_count(): size_t const
++ranged_failure(index: const size_t&amp;): std::string const
++wound_made_count(): size_t const
++wound_made(index: const size_t&amp;): std::string const
++wound_avoid_count(): size_t const
++wound_avoid(index: const size_t&amp;): std::string const
++clear_manager_tags(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>508</x>
+      <y>972</y>
+      <w>140</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;370.0;110.0;370.0;110.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>548</x>
+      <y>1116</y>
+      <w>100</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;620.0;230.0;620.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>932</x>
+      <y>948</y>
+      <w>132</w>
+      <h>428</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>20.0;10.0;310.0;10.0;310.0;1040.0;10.0;1040.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1052</x>
+      <y>1012</y>
+      <w>220</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>530.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>1088</y>
+      <w>136</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Sqlite3
+--
+library to work with SQLite databases</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>132</x>
+      <y>1116</y>
+      <w>188</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+provides interface to work with databases &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>956</y>
+      <w>368</w>
+      <h>432</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>900.0;1060.0;10.0;1060.0;10.0;10.0;900.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>680</y>
+      <w>324</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>TagManager
+--
+-tag_list: std::vector&lt;std::string&gt;
+
+-find_tag(tag_id: const size_t&amp;, start_pos: const size_t&amp;, source: const std::string&amp;): size_t const
+--
++TagManager()
++TagManager(tag_list: const std::vector&lt;std::string&gt;&amp;)
++~TagManager()
++is_filled(): bool const
++tags_count(): size_t const
++tag(index: const size_t&amp;): std::string const
++has_tag(tag: const char*): bool const
++has_tag(tag: const std::string&amp;): bool const
++add_tag(new_tag: const std::string&amp;): size_t
++add_tag(new_tag: consth char*): size_t
++remove_tag(index: const size_t&amp;): size_t
++remove_tag(tag: const std::string&amp;): size_t
++clear_tags(): size_t
++get_by_tag(tag_id: const size_t&amp;, start_pos: const size_t&amp;, source: const std::string&amp;, result: std::string&amp;): size_t const
++replace_tag(tag_id: const size_t&amp;, start_pos: const size_t&amp;, source: std::string&amp;, replacement: const std::string&amp;): size_t const
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>816</y>
+      <w>388</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=-
+          ^
+    provides with
+ tags from database</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;950.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>416</x>
+      <y>760</y>
+      <w>648</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=4</panel_attributes>
+    <additional_attributes>10.0;10.0;1600.0;10.0;1600.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>116</x>
+      <y>72</y>
+      <w>1500</w>
+      <h>616</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+provides what()/short_what() results with proper mark-up &gt;</panel_attributes>
+    <additional_attributes>3730.0;20.0;10.0;20.0;10.0;1520.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1796</x>
+      <y>804</y>
+      <w>204</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Some MVC-like mid-layer here
+--
+Questions
+--
+1. Is any message processing mid-layer between GUI and World needed
+2. If yes, what's better to use:
+--- Two queues(one for user input messages, other for everything else)
+--- Priority queue
+3. There shall be some proper what()/short_what() processors
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1668</x>
+      <y>916</y>
+      <w>100</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Abstract Factory pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>372</x>
+      <y>668</y>
+      <w>68</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Component pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1728</x>
+      <y>32</y>
+      <w>72</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Update method pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2036</x>
+      <y>272</y>
+      <w>64</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Component pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1076</x>
+      <y>280</y>
+      <w>128</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Occupation
+--
+-consumption: std::vector&lt;size_t&gt;
+--
++Occupation(data: const OccupationTemplate&amp;)
+/~+Occupation()/
++consumption(): std::vector&lt;size_t&gt; const
++what(): std::string const
++short_what(): std::string const
++update(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1132</x>
+      <y>256</y>
+      <w>208</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;500.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1136</x>
+      <y>336</y>
+      <w>124</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>290.0;220.0;10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1172</x>
+      <y>268</y>
+      <w>60</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Type Object pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2332</x>
+      <y>808</y>
+      <w>136</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>Urho3D
+--
+Cross-platform 2D/3D game engine</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2124</x>
+      <y>804</y>
+      <w>144</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>MyFramework
+--
+Simple framework providing basic app class with some
+built-in features, scene manager, etc.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2264</x>
+      <y>828</y>
+      <w>76</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=-
+simplifies work with &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1996</x>
+      <y>824</y>
+      <w>136</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt; sends user input messages
+receives processed World's responses &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1600</x>
+      <y>824</y>
+      <w>204</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt; receives user input and GUI requests
+sends responses &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;490.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1872</x>
+      <y>876</y>
+      <w>128</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>Polymorphic messages class hierarchy there
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1824</x>
+      <y>852</y>
+      <w>56</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+if yes &gt;</panel_attributes>
+    <additional_attributes>120.0;100.0;10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1576</x>
+      <y>696</y>
+      <w>60</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Facade pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>908</x>
+      <y>280</y>
+      <w>140</w>
+      <h>124</h>
+    </coordinates>
+    <panel_attributes>TypeBuilding
+--
+-item_production: std::vector&lt;size_t&gt;
+-resource_production: std::vector&lt;size_t&gt;
+-cost: std::string&lt;size_t&gt;
+-occupations: std::vector&lt;ssize_t&gt;
+-workers_cap: size_t
+-inhabitants_cap: size_t
+--
++TypeBuilding(data: const TypeBuildingTemplate&amp;)
++item_production(): std::vector&lt;size_t&gt; const
++resource_production(): std::vector&lt;size_t&gt; const
++cost(): std::vector&lt;size_t&gt; const
++occupations(): std::vector&lt;size_t&gt; const
++workers_cap(): size_t const
++inhabitants_cap() size_t const
++what(): std::string const
++short_what(): std::string const
++update(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1008</x>
+      <y>268</y>
+      <w>60</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>Type Object pattern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>964</x>
+      <y>256</y>
+      <w>180</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>684</x>
+      <y>280</y>
+      <w>176</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>Building
+--
+#workers: std::vector&lt;GameCharacter*&gt;
+#inhabitants: std::vector&lt;GameCharacter*&gt;
+--
++Building(data: const BuildingTemplate&amp;, kind: const TypeBuilding&amp;)
++item_production(): std::vector&lt;size_t&gt; const
++resource_production(): std::vector&lt;size_t&gt; const
++cost(): std::vector&lt;size_t&gt; const
++occupations(): std::vector&lt;size_t&gt; const
++workers_cap(): size_t const
++workers(): std::vector&lt;GameCharacter*&gt; const
++inhabitants_cap(): size_t const
++inhabitants(): std::vector&lt;GameCharacter*&gt; const
++has_free_space(): bool const
++add_worker(worker: GameCharacter*): size_t
++remove_worker(index: const size_t&amp;): size_t
++remove_worker(id: const ssize_t&amp;): size_t
++add_inhabitant(inhabitant: GameCharacter*): size_t
++remove_inhabitant(index: const size_t&amp;): size_t
++remove_inhabitant(id: const ssize_t&amp;): size_t
++demolish(): size_t
++what(): std::string const
++short_what(): std::string const
++update(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>856</x>
+      <y>328</y>
+      <w>60</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>256</y>
+      <w>208</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;500.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>788</x>
+      <y>432</y>
+      <w>472</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..*
+
+               ^
+lives and/or works in</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;1160.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>432</y>
+      <w>580</w>
+      <h>236</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m2=0..*</panel_attributes>
+    <additional_attributes>1430.0;570.0;10.0;570.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>188</x>
+      <y>280</y>
+      <w>468</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>Village
+--
+#villagers: std::vector&lt;GameCharacter*&gt;
+#items: std::vector&lt;GameObject*&gt;
+#buildings: std::vector&lt;Building*&gt;
+#resources: std::vector&lt;size_t&gt;
+--
++Village(data: const VillageTemplate&amp;, character_pool: const std::vector&lt;GameCharacter*&gt;&amp;, item_pool: const std::vector&lt;GameObject*&gt;&amp;, buildings_pool: const std::vector&lt;Building*&gt;&amp;)
+/+~Village()/
++villagers(): std::vector&lt;GameCharacter*&gt; const
++villagers(index: const size_t&amp;): GameCharacter* const
++items(): std::vector&lt;GameObject*&gt; const
++items(index: const size_t&amp;): GameObject* const
++buildings(): std::vector&lt;Building*&gt; const
++buildings(index: const size_t&amp;): Building* const
++resources(): std::vector&lt;size_t&gt; const
++resources(index: const size_t&amp;): size_t const
++save_data(): VillageTemplate const
++what(): std::string const
++short_what(): std::string const
++update(): size_t
++add_villager(villager: GameCharacter*): size_t
++remove_villager(index: const size_t&amp;): size_t
++remove_villager(id: const ssize_t&amp;): size_t
++add_item(item: GameObject*): size_t
++remove_item(index: const size_t&amp;): size_t
++remove_item(id: const ssize_t&amp;): size_t
++add_building(building: Building*): size_t
++remove_building(index: const size_t&amp;): size_t
++remove_building(id: const ssize_t&amp;): size_t
++add_resource(index: const size_t&amp;, amount: const size_t&amp;): size_t
++remove_resource(index: const size_t&amp;, amount: const size_t&amp;): size_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>428</x>
+      <y>256</y>
+      <w>352</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;860.0;10.0</additional_attributes>
   </element>
 </diagram>
