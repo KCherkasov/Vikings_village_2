@@ -69,20 +69,20 @@ void process_log(std::string& log, const WorldStorage& storage) {
   }
 }
 
-int main(int argc, char** argv) {
+int main() {
   seed();
   const size_t CHARACTERS_PER_SQUAD = 15;
-  
+
   std::string templates_db_name("Templates.db");
   std::string ui_db_name("UITexts.db");
   std::string log_name("battle_log.log");
-  
-  std::cout << "\nVikings village ver.0.1 battle mechanics test\n\nInitializing storage using " << templates_db_name << " and " << ui_db_name << " databases...";
+
+  std::cout << "\nVikings village ver.0.1 battle mechanics test\n \nInitializing storage using " << templates_db_name << " and " << ui_db_name << " databases...";
   WorldStorage storage(templates_db_name, ui_db_name);
   if (storage.is_filled()) {
     std::cout << "success" << std::endl << std::endl;
   } else {
-    std::cout << "faliure. Aborting test." << std::endl << std::endl;
+    std::cout << "failure. Aborting test." << std::endl << std::endl;
     return 0;
   }
   size_t total_characters = 2 * (CHARACTERS_PER_SQUAD + roll_dice(BASIC_SEED) + 1);
@@ -151,8 +151,7 @@ int main(int argc, char** argv) {
   delete battle;
   std::cout << "\nbattle cleaning done...";
   storage.clear();
-  std::cout << "\nstorage cleaning done...\nFinishing the test.";
-  system("pause");
+  std::cout << "\nstorage cleaning done...\nFinishing the test.\n\n";
 	return 0;
 }
 

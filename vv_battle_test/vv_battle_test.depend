@@ -1,0 +1,149 @@
+# depslib dependency file v1.0
+1490865072 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/BaseStorage.cpp
+	"BaseStorage.h"
+
+1490865072 /home/kvcherk/projects/gamedev/Vikings_village_2/source/BaseStorage.h
+	"misc.h"
+	"SQLite/sqlite3.h"
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/misc.h
+	<vector>
+	<string>
+	<fstream>
+	<sstream>
+	<ctime>
+	<cmath>
+	<cstdlib>
+
+1487003144 /home/kvcherk/projects/gamedev/Vikings_village_2/source/SQLite/sqlite3.h
+	<stdarg.h>
+
+1490865074 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/Battle.cpp
+	"Battle.h"
+
+1490865074 /home/kvcherk/projects/gamedev/Vikings_village_2/source/Battle.h
+	"GameCharacter.h"
+
+1490865074 /home/kvcherk/projects/gamedev/Vikings_village_2/source/GameCharacter.h
+	"LevelableObject.h"
+	"StorageEntities.h"
+
+1490865074 /home/kvcherk/projects/gamedev/Vikings_village_2/source/LevelableObject.h
+	"GameObject.h"
+
+1490865074 /home/kvcherk/projects/gamedev/Vikings_village_2/source/GameObject.h
+	"GameEntity.h"
+
+1490865074 /home/kvcherk/projects/gamedev/Vikings_village_2/source/GameEntity.h
+	"misc.h"
+	"TagManager.h"
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/TagManager.h
+	<iostream>
+	<string>
+	<vector>
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/StorageEntities.h
+	"misc.h"
+
+1490865074 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/GameCharacter.cpp
+	"GameCharacter.h"
+
+1490865074 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/GameEntity.cpp
+
+1490865074 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/LevelableObject.cpp
+
+1490865076 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/misc.cpp
+	"misc.h"
+
+1487003144 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/SQLite/sqlite3.c
+	<vxWorks.h>
+	<pthread.h>
+	"mingw.h"
+	"_mingw.h"
+	<stdarg.h>
+	"config.h"
+	<stdint.h>
+	<inttypes.h>
+	<intrin.h>
+	<cmnintrin.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stddef.h>
+	<TargetConditionals.h>
+	<ctype.h>
+	<time.h>
+	<sys/sysctl.h>
+	<malloc/malloc.h>
+	<libkern/OSAtomic.h>
+	<malloc.h>
+	<pthread.h>
+	"windows.h"
+	<sys/cygwin.h>
+	<errno.h>
+	<process.h>
+	<math.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<unistd.h>
+	<sys/time.h>
+	<errno.h>
+	<sys/mman.h>
+	<sys/ioctl.h>
+	<sys/file.h>
+	<sys/param.h>
+	<semaphore.h>
+	<limits.h>
+	<sys/mount.h>
+	<utime.h>
+	<sys/dcmd_blk.h>
+	<sys/statvfs.h>
+	<dlfcn.h>
+	"sqlite_tcl.h"
+	"tcl.h"
+	"sqlite3rtree.h"
+	<unicode/utypes.h>
+	<unicode/uregex.h>
+	<unicode/ustring.h>
+	<unicode/ucol.h>
+	<unicode/ubrk.h>
+	<unicode/utf16.h>
+	<ctype.h>
+	<math.h>
+
+1490865076 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/StorageEntities.cpp
+	"StorageEntities.h"
+
+1490865076 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/TagManager.cpp
+
+1490865076 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/TemplateStorage.cpp
+	"TemplateStorage.h"
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/TemplateStorage.h
+	"StorageEntities.h"
+	"BaseStorage.h"
+
+1490875164 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/UITextStorage.cpp
+	"UITextStorage.h"
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/UITextStorage.h
+	"misc.h"
+	"BaseStorage.h"
+
+1490875263 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/WorldStorage.cpp
+	"WorldStorage.h"
+
+1490865076 /home/kvcherk/projects/gamedev/Vikings_village_2/source/WorldStorage.h
+	"TemplateStorage.h"
+	"GameCharacter.h"
+	"Battle.h"
+	"UITextStorage.h"
+	"TagManager.h"
+
+1490874771 source:/home/kvcherk/projects/gamedev/Vikings_village_2/source/vv2_battle_test.cpp
+	<iostream>
+	"WorldStorage.h"
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="vikings_village_battle_test" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="pthread" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../source/BaseStorage.cpp" />
+		<Unit filename="../source/BaseStorage.h" />
+		<Unit filename="../source/Battle.cpp" />
+		<Unit filename="../source/Battle.h" />
+		<Unit filename="../source/GameCharacter.cpp" />
+		<Unit filename="../source/GameCharacter.h" />
+		<Unit filename="../source/GameEntity.cpp" />
+		<Unit filename="../source/GameEntity.h" />
+		<Unit filename="../source/GameObject.h" />
+		<Unit filename="../source/LevelableObject.cpp" />
+		<Unit filename="../source/LevelableObject.h" />
+		<Unit filename="../source/SQLite/sqlite3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../source/SQLite/sqlite3.h" />
+		<Unit filename="../source/StorageEntities.cpp" />
+		<Unit filename="../source/StorageEntities.h" />
+		<Unit filename="../source/TagManager.cpp" />
+		<Unit filename="../source/TagManager.h" />
+		<Unit filename="../source/TemplateStorage.cpp" />
+		<Unit filename="../source/TemplateStorage.h" />
+		<Unit filename="../source/UITextStorage.cpp" />
+		<Unit filename="../source/UITextStorage.h" />
+		<Unit filename="../source/WorldStorage.cpp" />
+		<Unit filename="../source/WorldStorage.h" />
+		<Unit filename="../source/misc.cpp" />
+		<Unit filename="../source/misc.h" />
+		<Unit filename="../source/vv2_battle_test.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
