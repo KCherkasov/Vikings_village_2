@@ -6,9 +6,9 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+			<Target title="Debug-linux">
+				<Option output="bin/Debug-linux/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug-linux/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -21,9 +21,35 @@
 					<Add library="dl" />
 				</Linker>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
+			<Target title="Release-linux">
+				<Option output="bin/Release-linux/vikings_village_battle_test" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="pthread" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
+			<Target title="Debug-win">
+				<Option output="bin/Debug-win/vikings_village_battle_test.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug-win/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-g" />
+					<Add option="-std=c++11" />
+				</Compiler>
+			</Target>
+			<Target title="Release-win">
+				<Option output="bin/Release-win/vikings_village_battle_test.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release-win/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -36,7 +62,7 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
+			<Add option="-O2" />
 		</Compiler>
 		<Unit filename="../source/BaseStorage.cpp" />
 		<Unit filename="../source/BaseStorage.h" />
@@ -69,6 +95,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
