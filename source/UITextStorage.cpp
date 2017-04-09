@@ -23,7 +23,7 @@ ssize_t UITextStorage::read_stat_names(sqlite3*& connection) {
     _stat_names[_stat_names.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
   }
   response = sqlite3_finalize(statement);
-  return response;  
+  return response;
 }
 
 ssize_t UITextStorage::read_gender_names(sqlite3*& connection) {
@@ -94,6 +94,7 @@ ssize_t UITextStorage::read_ui_tags(sqlite3*& connection) {
 ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
   read_character_tags(connection);
   read_battle_tags(connection);
+  read_inv_item_tags(connection);
   read_ui_tags(connection);
   return RC_OK;
 }
@@ -142,14 +143,13 @@ bool UITextStorage::is_filled() const {
 
 size_t UITextStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
-  open_connection(db_name, database);
-  read_character_field_names(database);
-  read_inv_item_tags(database);
+  this->open_connection(db_name, database);
+  read_character_field_names(database);// std::cout << "chrfield\n";
   read_stat_names(database);
   read_manager_tags(database);
   read_gender_names(database);
   read_battle_log_parts(database);
-  close_connection(database);
+  this->close_connection(database);
   return RC_OK;
 }
 
