@@ -69,10 +69,7 @@ class UITextStorage: public BaseStorage {
     ssize_t read_stat_names(sqlite3*& connection);
     ssize_t read_gender_names(sqlite3*& connection);
 
-    ssize_t read_character_tags(sqlite3*& connection);
-    ssize_t read_inv_item_tags(sqlite3*& connection);
-    ssize_t read_battle_tags(sqlite3*& connection);
-    ssize_t read_ui_tags(sqlite3*& connection);
+    ssize_t read_tags(sqlite3*& connection, const char* table_name, std::vector<std::string>& target);
     ssize_t read_manager_tags(sqlite3*& connection);
     
     ssize_t read_battle_log_parts(sqlite3*& connection);
