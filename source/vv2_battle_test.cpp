@@ -87,10 +87,11 @@ int main() {
   }
   size_t total_characters = 2 * (CHARACTERS_PER_SQUAD + roll_dice(BASIC_SEED) + 1);
   std::cout << "Initializing " << total_characters << " battle characters...\n";
-  std::vector<GameCharacter*> pool;
+  std::unordered_map<ssize_t, GameEntity*> pool;
   for (size_t i = 0; i < total_characters; ++i) {
-    pool.push_back(NULL);
-    storage.make_character(pool[pool.size() - 1], roll_dice(BASIC_SEED) + START_LEVEL);
+    GameCharacter* character = NULL;
+    storage.make_character(character, roll_dice(BASIC_SEED) + START_LEVEL);
+    pool[character->id()] = dynamic_cast<GameEntity*>(character);
     std::cout << i + 1 << "/" << total_characters << " (" << (i + 1) * PERCENT_CAP / total_characters << "\%)\n";
   }
   std::cout << "Done.\n\nDistributing characters between viking and enemy squads...\n\n";
@@ -141,9 +142,9 @@ int main() {
     std::cout << "failure.\n" << std::endl;
   }
   std::cout << "Done.\n\nMaking cleanup...";
-  for (size_t i = 0; i < pool.size(); ++i) {
-    if (pool[i] != NULL) {
-      delete pool[i];
+  for (auto object = pool.begin(); object != pool.end(); ++object) {
+    if (object->second != NULL) {
+      delete object->second;
     }
   }
   pool.clear();

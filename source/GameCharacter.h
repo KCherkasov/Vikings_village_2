@@ -3,6 +3,7 @@
 
 #include "LevelableObject.h"
 #include "StorageEntities.h"
+#include "Inventory.h"
 
 class GameCharacter: public LevelableObject {
   public:

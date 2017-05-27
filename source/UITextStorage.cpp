@@ -42,25 +42,33 @@ ssize_t UITextStorage::read_gender_names(sqlite3*& connection) {
 ssize_t UITextStorage::read_tags(sqlite3*& connection, const char* table_name, std::vector<std::string>& target) {
   target.clear();
   sqlite3_stmt* statement;
-  ssize_t response = sqlite3_prepare(connection, "select count(id) from '?'", -1, &statement, 0);
-  sqlite3_bind_text(statement, 1, table_name);
+  std::string name;
+  name.append(table_name);
+  std::string query;
+  query.append("select count(id) from ");
+  query += name;
+  ssize_t response = sqlite3_prepare(connection, query.data(), -1, &statement, 0);
   sqlite3_step(statement);
   size_t count = sqlite3_column_int(statement, 0);
   sqlite3_finalize(statement);
-  response = sqlite3_prepare(connection, "select id, tag from '?'", -1, &statement, 0);
-  sqlite3_bind_text(statement, 1, table_name);
+  query.clear();
+  query.append("select id, tag from ");
+  query += name;
+  response = sqlite3_prepare(connection, query.data(), -1, &statement, 0);
   for (size_t i = 0; i < count; ++i) {
     response = sqlite3_step(statement);
     target.push_back(std::string());
     target[target.size() - 1].append((const char*)(sqlite3_column_text(statement, 1)));
   }
+  sqlite3_finalize(statement);
+  return response;
 }
 
 ssize_t UITextStorage::read_manager_tags(sqlite3*& connection) {
-  read_tags(connection, "character_tags", _character_manager_tags);
-  read_tags(connection, "inv_item_tags", _inv_item_manager_tags);
-  read_tags(connection, "battle_tags", _battle_manager_tags);
-  read_tags(connection, "ui_tags", _ui_manager_tags);
+  read_tags(connection, "'character_tags'", _character_manager_tags);
+  read_tags(connection, "'inv_item_tags'", _inv_item_manager_tags);
+  read_tags(connection, "'battle_tags'", _battle_manager_tags);
+  read_tags(connection, "'ui_tags'", _ui_manager_tags);
   return RC_OK;
 }
 
@@ -109,11 +117,11 @@ bool UITextStorage::is_filled() const {
 size_t UITextStorage::fill_storage(const std::string& db_name) {
   sqlite3* database = NULL;
   this->open_connection(db_name, database);
-  read_character_field_names(database);// std::cout << "chrfield\n";
-  read_stat_names(database);
-  read_manager_tags(database);
-  read_gender_names(database);
-  read_battle_log_parts(database);
+  this->read_character_field_names(database);
+  this->read_stat_names(database);
+  this->read_manager_tags(database);
+  this->read_gender_names(database);
+  this->read_battle_log_parts(database);
   this->close_connection(database);
   return RC_OK;
 }

@@ -10,6 +10,7 @@ class GameEntity {
     virtual ~GameEntity() {}
     ssize_t id() const { return _own_id; }
     bool to_delete() const { return _to_delete; }
+    TagManager* manager() const { return const_cast<TagManager*>(this->_manager); }
     size_t set_manager(TagManager* manager) { if (_manager != NULL) { return RC_HAS_MANAGER; } if (manager == NULL) { return RC_BAD_INPUT; } _manager = manager; return RC_OK; }
     virtual std::string what() const = 0;
     virtual std::string short_what() const = 0;

@@ -17,6 +17,6 @@ class Inventory: public GameEntity {
     size_t update() { return RC_OK; }
   private:
     std::vector<Item*> _items;
-}
+};
 
 #endif

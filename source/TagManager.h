@@ -1,7 +1,6 @@
 ﻿#ifndef TAG_MANAGER_H
 #define TAG_MANAGER_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 

@@ -2,7 +2,7 @@
 
 Inventory::Inventory(const InventoryTemplate& data, const std::vector<GameObject*>& item_pool): GameEntity(data._own_id), _items(std::vector<Item*>(data._item_ids.size(), NULL)) {
   for (size_t i = 0; i < _items.size(); ++i) {
-    _items[i] = dynamic_cast<Item*>(get_by_id<GameObject>(item_pool));
+    _items[i] = dynamic_cast<Item*>(get_by_id<GameObject>(data._item_ids[i], item_pool));
   }
 }
 
@@ -28,7 +28,7 @@ ssize_t Inventory::bonuses(const size_t& index) const {
   ssize_t bonus = SSIZE_T_DEFAULT_VALUE;
   for (size_t i = 0; i < _items.size(); ++i) {
     if (_items[i] != NULL) {
-      bonus += _items[i]->bonuses[index];
+      bonus += _items[i]->bonuses(index);
     }
   }
   return bonus;
@@ -59,7 +59,7 @@ InventoryTemplate Inventory::save_data() const {
   data._own_id = _own_id;
   for (size_t i = 0; i < _items.size(); ++i) {
     if (_items[i] != NULL) {
-      data._item_ids.push_back(_items[i]->id();
+      data._item_ids.push_back(_items[i]->id());
     } else {
       data._item_ids.push_back(FREE_ID);
     }
@@ -84,7 +84,7 @@ std::string Inventory::what() const {
 
 std::string Inventory::short_what() const {
   std::string result;
-  std::vector<ssize_t> bonuses = bonuses();
+  std::vector<ssize_t> bonuses = this->bonuses();
   result += _manager->tag(IT_BONUSES);
   for (size_t i = 0; i < bonuses.size(); ++i) {
     result += convert_to_string<ssize_t>(bonuses[i]);

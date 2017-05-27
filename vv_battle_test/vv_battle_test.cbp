@@ -12,8 +12,6 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
@@ -27,11 +25,10 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
-					<Add option="-std=c++11" />
+					<Add option="-m32" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
+					<Add option="-m32" />
 					<Add library="pthread" />
 					<Add library="dl" />
 				</Linker>
@@ -42,9 +39,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
 					<Add option="-g" />
-					<Add option="-std=c++11" />
 				</Compiler>
 			</Target>
 			<Target title="Release-win">
@@ -52,27 +47,24 @@
 				<Option object_output="obj/Release-win/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-					<Add option="-std=c++11" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
 			</Target>
 		</Build>
-		<Compiler>
-			<Add option="-O2" />
-		</Compiler>
 		<Unit filename="../source/BaseStorage.cpp" />
 		<Unit filename="../source/BaseStorage.h" />
 		<Unit filename="../source/Battle.cpp" />
 		<Unit filename="../source/Battle.h" />
+		<Unit filename="../source/Collection.h" />
 		<Unit filename="../source/GameCharacter.cpp" />
 		<Unit filename="../source/GameCharacter.h" />
 		<Unit filename="../source/GameEntity.cpp" />
 		<Unit filename="../source/GameEntity.h" />
 		<Unit filename="../source/GameObject.h" />
+		<Unit filename="../source/Inventory.cpp" />
+		<Unit filename="../source/Inventory.h" />
+		<Unit filename="../source/Item.cpp" />
+		<Unit filename="../source/Item.h" />
+		<Unit filename="../source/ItemPart.cpp" />
+		<Unit filename="../source/ItemPart.h" />
 		<Unit filename="../source/LevelableObject.cpp" />
 		<Unit filename="../source/LevelableObject.h" />
 		<Unit filename="../source/SQLite/sqlite3.c">

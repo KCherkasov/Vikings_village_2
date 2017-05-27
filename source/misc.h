@@ -69,12 +69,15 @@ const size_t RARE_CHANCE = 13;
 const size_t EPIC_CHANCE = 6;
 const size_t LEGENDARY_CHANCE = 3;
 
+// item parts per item
+const size_t ITEM_PARTS_PER_ITEM = 3;
+
 //-- global constants declaration end --//
 
 //-- enumerations declaration --//
 
 // used for marking functions and methods ending and future error handling
-enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_BAD_INDEX, RC_NO_MANAGER, RC_HAS_MANAGER, RC_RTTI_ERROR, RC_SIZE };
+enum ResponseCodes { RC_OK, RC_BAD_INPUT, RC_BAD_INDEX, RC_NO_MANAGER, RC_HAS_MANAGER, RC_RTTI_ERROR, RC_FILE_ERROR, RC_SIZE };
 
 // two-elements array indices and size, used to designated current state and max value of some stats
 enum PairIndices { PI_CURRENT, PI_MAX, PI_SIZE };
@@ -168,7 +171,7 @@ T* get_by_id(const ssize_t& id, const std::vector<T*>& pool) {
       while (pool[middle] == NULL && step <= middle) {
         if (pool[middle - step] != NULL) {
           middle -= step;
-          break;          
+          break;
         } else if (pool[std::min(pool.size(), middle + step)] != NULL) {
           middle = std::min(pool.size(), middle + step);
           break;
