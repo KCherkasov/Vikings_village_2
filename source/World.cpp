@@ -85,6 +85,9 @@ ssize_t World::make_battle(Collecion<GameEntity>& raiders) {
 }
 
 size_t World::new_game(const std::string& player_name) {
+  if (player_name.empty()) {
+    return RC_BAD_INPUT;
+  }
   this->cleanup();
   return RC_OK;
 }
