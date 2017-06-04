@@ -16,7 +16,7 @@ Collection {
     size_t add(T* item) { if (item == NULL) { return RC_BAD_INPUT; } if (this->has(item->id())) { return RC_BAD_INPUT; } this->_items[item->id()] = item; return RC_OK; }
     size_t remove(ssize_t key) { if (!this->has(key)) { return RC_BAD_INPUT; } this->_items.erase(key); return RC_OK; }
     size_t update();
-    size_t clear_null();
+    size_t clear_null(); // remove
     size_t clear_to_delete(bool dispose = false);
     std::unordered_map<ssize_t, T*>& map() { return this->_items; }
 

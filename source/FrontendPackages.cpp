@@ -1,6 +1,6 @@
 #include "FrontendPackages.h"
 
-//-- related functions --//
+//-- related functions (mostly hardcoded stuff that'll be replaced with db tables) --//
 
 std::string get_kind_name(size_t kind) {
   std::string result;
@@ -382,7 +382,7 @@ void ItemData::get_parts(Item* item, Collection<BasePackage>& responses) {
           ItemPartData* data = new ItemPartData(item->part(i), this->_dictionary);
           responses.add(data);
         }
-        this->_parts.push_back(item->parts(i)->id());
+        this->_parts.push_back(responses[item->parts(i)->id()]);
       }
     }
   }
