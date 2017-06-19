@@ -154,7 +154,7 @@
 	"misc.h"
 	"SQLite/sqlite3.h"
 
-1490714182 d:\git_repos\vikings_village_2\source\misc.h
+1496007628 d:\git_repos\vikings_village_2\source\misc.h
 	<vector>
 	<string>
 	<fstream>
@@ -166,15 +166,17 @@
 1490875916 d:\git_repos\vikings_village_2\source\sqlite\sqlite3.h
 	<stdarg.h>
 
-1490714182 source:d:\git_repos\vikings_village_2\source\battle.cpp
+1496007628 source:d:\git_repos\vikings_village_2\source\battle.cpp
 	"Battle.h"
 
-1490714182 d:\git_repos\vikings_village_2\source\battle.h
+1496007628 d:\git_repos\vikings_village_2\source\battle.h
 	"GameCharacter.h"
+	<unordered_map>
 
-1490716344 d:\git_repos\vikings_village_2\source\gamecharacter.h
+1496007628 d:\git_repos\vikings_village_2\source\gamecharacter.h
 	"LevelableObject.h"
 	"StorageEntities.h"
+	"Inventory.h"
 
 1485507930 d:\git_repos\vikings_village_2\source\levelableobject.h
 	"GameObject.h"
@@ -182,12 +184,11 @@
 1487368083 d:\git_repos\vikings_village_2\source\gameobject.h
 	"GameEntity.h"
 
-1485907004 d:\git_repos\vikings_village_2\source\gameentity.h
+1496007628 d:\git_repos\vikings_village_2\source\gameentity.h
 	"misc.h"
 	"TagManager.h"
 
-1485814097 d:\git_repos\vikings_village_2\source\tagmanager.h
-	<iostream>
+1496007628 d:\git_repos\vikings_village_2\source\tagmanager.h
 	<string>
 	<vector>
 
@@ -267,32 +268,35 @@
 
 1485706915 source:d:\git_repos\vikings_village_2\source\tagmanager.cpp
 
-1490714182 source:d:\git_repos\vikings_village_2\source\templatestorage.cpp
+1496007628 source:d:\git_repos\vikings_village_2\source\templatestorage.cpp
 	"TemplateStorage.h"
 
 1487544091 d:\git_repos\vikings_village_2\source\templatestorage.h
 	"StorageEntities.h"
 	"BaseStorage.h"
 
-1490875916 source:d:\git_repos\vikings_village_2\source\uitextstorage.cpp
+1496007628 source:d:\git_repos\vikings_village_2\source\uitextstorage.cpp
 	"UITextStorage.h"
 
-1490714182 d:\git_repos\vikings_village_2\source\uitextstorage.h
+1496007628 d:\git_repos\vikings_village_2\source\uitextstorage.h
 	"misc.h"
 	"BaseStorage.h"
 
-1490875916 source:d:\git_repos\vikings_village_2\source\vv2_battle_test.cpp
+1496007628 source:d:\git_repos\vikings_village_2\source\vv2_battle_test.cpp
 	<iostream>
 	"WorldStorage.h"
 
-1490714182 d:\git_repos\vikings_village_2\source\worldstorage.h
-	"TemplateStorage.h"
+1496007628 d:\git_repos\vikings_village_2\source\worldstorage.h
+	<unordered_map>
+	"ItemPart.h"
+	"Item.h"
 	"GameCharacter.h"
 	"Battle.h"
+	"TemplateStorage.h"
 	"UITextStorage.h"
 	"TagManager.h"
 
-1490876530 source:d:\git_repos\vikings_village_2\source\worldstorage.cpp
+1496007628 source:d:\git_repos\vikings_village_2\source\worldstorage.cpp
 	"WorldStorage.h"
 
 1485555226 source:c:\users\kvche\documents\github\vikings_village_2\source\basestorage.cpp
@@ -466,5 +470,25 @@
 	"Item.h"
 
 1494179986 source:c:\users\kvche\documents\github\vikings_village_2\source\itempart.cpp
+	"ItemPart.h"
+
+1496007628 d:\git_repos\vikings_village_2\source\inventory.h
+	"Item.h"
+
+1496007628 d:\git_repos\vikings_village_2\source\item.h
+	"ItemPart.h"
+	<unordered_map>
+
+1496007628 d:\git_repos\vikings_village_2\source\itempart.h
+	"StorageEntities.h"
+	"GameObject.h"
+
+1496007628 source:d:\git_repos\vikings_village_2\source\inventory.cpp
+	"Inventory.h"
+
+1496007628 source:d:\git_repos\vikings_village_2\source\item.cpp
+	"Item.h"
+
+1496007628 source:d:\git_repos\vikings_village_2\source\itempart.cpp
 	"ItemPart.h"
 

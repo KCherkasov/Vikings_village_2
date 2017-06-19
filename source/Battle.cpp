@@ -289,7 +289,7 @@ size_t Battle::fight_round() {
   return RC_OK;
 }
 
-std::vector<size_t> Battle::generate_reward() {
+std::vector<size_t> Battle::generate_reward() const {
   std::vector<size_t> result;
   seed();
   for (size_t i = 0; i < RI_SIZE; ++i) {
