@@ -5,29 +5,31 @@
     <id>UMLState</id>
     <coordinates>
       <x>90</x>
-      <y>170</y>
+      <y>200</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>IntroScreen</panel_attributes>
+    <panel_attributes>IntroScreen
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
       <x>340</x>
-      <y>170</y>
+      <y>200</y>
       <w>310</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Main Menu</panel_attributes>
+    <panel_attributes>Main Menu
+bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>170</x>
-      <y>170</y>
+      <y>200</y>
       <w>190</w>
       <h>40</h>
     </coordinates>
@@ -39,7 +41,7 @@ on end</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>0</x>
-      <y>180</y>
+      <y>210</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -50,7 +52,7 @@ on end</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>170</y>
+      <y>200</y>
       <w>110</w>
       <h>40</h>
     </coordinates>
@@ -62,7 +64,7 @@ on end</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>340</x>
-      <y>340</y>
+      <y>370</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -73,7 +75,7 @@ on end</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>410</x>
-      <y>240</y>
+      <y>270</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -86,7 +88,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>240</y>
+      <y>270</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -101,18 +103,19 @@ pressed</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>340</x>
-      <y>10</y>
+      <y>40</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Credits</panel_attributes>
+    <panel_attributes>Credits
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>40</y>
+      <y>70</y>
       <w>70</w>
       <h>150</h>
     </coordinates>
@@ -124,7 +127,7 @@ on end</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>400</x>
-      <y>40</y>
+      <y>70</y>
       <w>80</w>
       <h>150</h>
     </coordinates>
@@ -137,7 +140,7 @@ pressed</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>520</x>
-      <y>10</y>
+      <y>40</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -148,7 +151,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>590</x>
-      <y>40</y>
+      <y>70</y>
       <w>80</w>
       <h>150</h>
     </coordinates>
@@ -161,7 +164,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>520</x>
-      <y>40</y>
+      <y>70</y>
       <w>80</w>
       <h>150</h>
     </coordinates>
@@ -174,7 +177,7 @@ pressed</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>530</x>
-      <y>340</y>
+      <y>370</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -185,7 +188,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>600</x>
-      <y>240</y>
+      <y>270</y>
       <w>100</w>
       <h>120</h>
     </coordinates>
@@ -198,7 +201,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>530</x>
-      <y>240</y>
+      <y>270</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -211,7 +214,7 @@ pressed</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>770</x>
-      <y>190</y>
+      <y>220</y>
       <w>280</w>
       <h>40</h>
     </coordinates>
@@ -222,7 +225,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>640</x>
-      <y>190</y>
+      <y>220</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -235,7 +238,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>600</x>
-      <y>20</y>
+      <y>50</y>
       <w>230</w>
       <h>190</h>
     </coordinates>
@@ -248,7 +251,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>600</x>
-      <y>10</y>
+      <y>40</y>
       <w>300</w>
       <h>200</h>
     </coordinates>
@@ -261,7 +264,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>610</x>
-      <y>220</y>
+      <y>250</y>
       <w>220</w>
       <h>170</h>
     </coordinates>
@@ -274,7 +277,7 @@ pressed</panel_attributes>
     <id>UMLState</id>
     <coordinates>
       <x>930</x>
-      <y>10</y>
+      <y>40</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -285,7 +288,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1000</x>
-      <y>40</y>
+      <y>70</y>
       <w>80</w>
       <h>170</h>
     </coordinates>
@@ -298,7 +301,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>930</x>
-      <y>40</y>
+      <y>70</y>
       <w>80</w>
       <h>170</h>
     </coordinates>
@@ -313,7 +316,7 @@ pressed</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>480</x>
-      <y>480</y>
+      <y>510</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -324,7 +327,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>240</y>
+      <y>270</y>
       <w>80</w>
       <h>270</h>
     </coordinates>
@@ -339,7 +342,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>220</y>
+      <y>250</y>
       <w>420</w>
       <h>290</h>
     </coordinates>
@@ -354,7 +357,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>400</x>
-      <y>220</y>
+      <y>250</y>
       <w>510</w>
       <h>340</h>
     </coordinates>
@@ -367,7 +370,7 @@ pressed</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>350</x>
-      <y>220</y>
+      <y>250</y>
       <w>590</w>
       <h>400</h>
     </coordinates>

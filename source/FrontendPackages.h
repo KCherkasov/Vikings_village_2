@@ -13,6 +13,8 @@
 #include "UITextStorage.h"
 #include "Collection.h"
 
+#include <cstring>
+
 //-- related functions --//
 
 std::string get_kind_name(size_t kind);
@@ -30,7 +32,8 @@ class BasePackage {
     virtual ~BasePackage() {}
     ssize_t id() const { return this->_id; }
     virtual size_t clear() { return RC_OK; }
-
+    virtual char* to_packet() const { RawPacket result; return result; }
+    virtual void from_packet(char* packet) {}
   protected:
     ssize_t _id; // package id (similar with the source object's id)
     UITextStorage* _dictionary;
@@ -44,6 +47,7 @@ class BasePackage {
 
 class BattleData: public BasePackage {
   public:
+    BattleData(char* packet): _id(FREE_ID), _dictionary(NULL) { this->from_packet(packet); }
     BattleData(Battle* battle, UITextStorage* dictionary, Collection<BasePackage>& responses): BasePackage(battle->id(), dictionary) { this->parse_object(battle, responses); }
     virtual ~BattleData() {}
 
@@ -51,7 +55,10 @@ class BattleData: public BasePackage {
 
     std::string log() const { return this->_battle_log; }
     GameCharacterData* survivor(ssize_t id) { return dynamic_cast<GameCharacterData*>(this->_survivors_data[id]); }
-    size_t survivors_count() const { return this->_survivors_data.size(); }
+    size_t survivors_count() const { return this->_survivors_data.map().size(); }
+
+    virtual char* to_packet() const;
+    virtual void from_packet(char* packet);
 
   protected:
     virtual std::string get_tag_replacement(size_t tag_id) const;
@@ -72,10 +79,11 @@ class BattleData: public BasePackage {
 enum CharacerPackage { CP_NAME, CP_GENDER, CP_LEVEL, CP_SIZE };
 enum StatsPackage { SP_TITLE, SP_MELEE, SP_RANGED, SP_DEFENSE, SP_SIZE };
 
-class CharacterData: public BasePackage {
+class GameCharacterData: public BasePackage {
   public:
-    CharacterData(GameCharacter* character, UITextStorage* dictionary): BasePackage(character->id(), dictionary) { this->parse_object(character); }
-    virtual ~CharacterData() {}
+    GameCharacterData(char* packet): _id(FREE_ID), _dictionary(NULL) { this->from_packet(packet); }
+    GameCharacterData(GameCharacter* character, UITextStorage* dictionary): BasePackage(character->id(), dictionary) { this->parse_object(character); }
+    virtual ~GameCharacterData() {}
 
     std::string name() const { return this->_generals[CP_NAME]; }
     std::string gender() const { return this->_generals[CP_GENDER]; }
@@ -89,6 +97,9 @@ class CharacterData: public BasePackage {
     std::string defense() const { return this->_stats[SP_DEFENSE]; }
 
     std::string stats(size_t index) const { if (index < this->_stats.size()) { return this->_generals[index]; } return std::string(); }
+
+    virtual char* to_packet() const;
+    virtual void from_packet(char* packet);
 
   protected:
     std::string get_tag_replacement(size_t tag_id) const;
@@ -111,6 +122,7 @@ enum ItemCosts { IC_TITLE, IC_GOLD, IC_FOOD, IC_WOOD, IC_IRON, IC_LEATHER, IC_SI
 
 class ItemData: public BasePackage {
   public:
+    ItemData(char* packet): _id(FREE_ID), _dictionary(NULL) { this->from_packet(packet); }
     ItemData(Item* item, UITextStorage* dictionary, Collection<BasePackage>& responses): BasePackage(item->id(), dictionary) { this->parse_object(item, responses); }
     virtual ~ItemData();
 
@@ -139,6 +151,9 @@ class ItemData: public BasePackage {
     std::string costs(size_t index) const { if (index < this->_costs.size()) { return this->_costs[index]; } return std::string(); }
 
     ItemPartData* part(size_t index) { return dynamic_cast<ItemPartData*>(this->_parts[index]); }
+
+    virtual char* to_packet() const;
+    virtual void from_packet(char* packet);
 
   protected:
     std::string get_tag_replacement(size_t tag_id) const;
@@ -188,6 +203,9 @@ class ItemPartData: public BasePackage {
     std::string leather_cost() const { return this->_costs[IC_LEATHER]; }
 
     std::string costs(size_t index) const { if (index < this->_costs.size()) { return this->_costs[index]; } return std::string(); }
+
+    virtual char* to_packet() const;
+    virtual void from_packet(char* packet);
 
   protected:
     std::string get_tag_replacement(size_t tag_id) const;
